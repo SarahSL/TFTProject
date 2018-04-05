@@ -18,7 +18,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.HelloAR
+// TO DO: REFACTOR
+
+namespace GoogleARCore.PrincipalAR
 {
     using System.Collections.Generic;
     using GoogleARCore;
@@ -33,7 +35,7 @@ namespace GoogleARCore.HelloAR
     /// <summary>
     /// Controls the HelloAR example.
     /// </summary>
-    public class HelloARController : MonoBehaviour
+    public class PrincipalARController : MonoBehaviour
     {
         /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR background).
@@ -53,7 +55,7 @@ namespace GoogleARCore.HelloAR
         /// <summary>
         /// A gameobject parenting UI for displaying the "searching for planes" snackbar.
         /// </summary>
-        public GameObject SearchingForPlaneUI;
+       // public GameObject SearchingForPlaneUI;
 
         /// <summary>
         /// A list to hold new planes ARCore began tracking in the current frame. This object is used across
@@ -92,7 +94,7 @@ namespace GoogleARCore.HelloAR
                 Screen.sleepTimeout = lostTrackingSleepTimeout;
                 if (!m_IsQuitting && Session.Status.IsValid())
                 {
-                    SearchingForPlaneUI.SetActive(true);
+                   // SearchingForPlaneUI.SetActive(true);
                 }
 
                 return;
@@ -114,17 +116,17 @@ namespace GoogleARCore.HelloAR
 
             // Hide snackbar when currently tracking at least one plane.
             Session.GetTrackables<TrackedPlane>(m_AllPlanes);
-            bool showSearchingUI = true;
+           // bool showSearchingUI = true;
             for (int i = 0; i < m_AllPlanes.Count; i++)
             {
                 if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
                 {
-                    showSearchingUI = false;
+                   // showSearchingUI = false;
                     break;
                 }
             }
 
-            SearchingForPlaneUI.SetActive(showSearchingUI);
+       //     SearchingForPlaneUI.SetActive(showSearchingUI);
 
             // If the player has not touched the screen, we are done with this update.
             Touch touch;

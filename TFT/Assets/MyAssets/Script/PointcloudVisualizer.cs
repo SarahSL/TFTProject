@@ -17,7 +17,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.HelloAR
+namespace GoogleARCore.PrincipalAR
 {
     using System.Collections.Generic;
     using GoogleARCore;
