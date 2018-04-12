@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TSC_OnWay : TSC_TruckControllerState
+public class GMS_ScanningRoom : GMS_ControllerState
 {
     public override void Enter()
     {
@@ -19,4 +19,5 @@ public class TSC_OnWay : TSC_TruckControllerState
     {
         throw new NotImplementedException();
     }
+    
 }

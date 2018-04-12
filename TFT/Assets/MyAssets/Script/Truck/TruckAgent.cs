@@ -22,15 +22,23 @@ public class TruckAgent : MonoBehaviour
     {
         SM_GoToState(m_states.m_angry);
     }
-    
+    public void SM_GoToSelected()
+    {
+        SM_GoToState(m_states.m_selected);
+    }
+    public void SM_GoToOnWay()
+    {
+        SM_GoToState(m_states.m_onway);
+    }
+
     #endregion
 
     private void Awake()
     {
         m_states.m_waiting = ScriptableObject.CreateInstance<TSC_Waiting>().Init(this) as TSC_Waiting;
         m_states.m_angry = ScriptableObject.CreateInstance<TSC_Angry>().Init(this) as TSC_Angry;
-        //  m_states.m_selected = ScriptableObject.CreateInstance<TSC_Selected>().Init(this) as TSC_Selected;
-        //  m_states.m_selected = ScriptableObject.CreateInstance<TSC_OnWay>().Init(this) as TSC_OnWay;
+        m_states.m_selected = ScriptableObject.CreateInstance<TSC_Selected>().Init(this) as TSC_Selected;
+        m_states.m_onway = ScriptableObject.CreateInstance<TSC_OnWay>().Init(this) as TSC_OnWay;
         m_states.m_current = m_states.m_waiting;
         SM_GoToWaiting();
     }
