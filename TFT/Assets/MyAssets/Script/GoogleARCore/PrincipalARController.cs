@@ -28,7 +28,6 @@ namespace GoogleARCore.PrincipalAR
     using UnityEngine.Rendering;
 
 #if UNITY_EDITOR
-    // Set up touch input propagation while using Instant Preview in the editor.
     using Input = InstantPreviewInput;
 #endif
     

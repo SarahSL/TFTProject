@@ -46,7 +46,7 @@ public class TruckAgent : MonoBehaviour
     [SerializeField]
     TruckControllerStates m_states;
 
-    [System.Serializable]
+    [Serializable]
     public class TruckControllerStates
     {
         public TSC_TruckControllerState m_current;

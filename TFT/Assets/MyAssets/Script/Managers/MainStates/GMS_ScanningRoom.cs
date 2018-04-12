@@ -1,23 +1,32 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GoogleARCore;
 using UnityEngine;
+using UnityEngine.Rendering;
 
+#if UNITY_EDITOR
+using Input = InstantPreviewInput;
+#endif
 public class GMS_ScanningRoom : GMS_ControllerState
 {
+    public Camera FirstPersonCamera;
+    public GameObject TrackedPlanePrefab;
+    public GameObject SearchingForPlaneUI;
+    private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
+    private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
+    private bool m_IsQuitting = false;
+
     public override void Enter()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+        
     }
-    
 }
