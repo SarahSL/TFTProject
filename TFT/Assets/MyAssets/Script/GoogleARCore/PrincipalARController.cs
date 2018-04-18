@@ -29,8 +29,9 @@ namespace GoogleARCore.PrincipalAR
 
 #if UNITY_EDITOR
     using Input = InstantPreviewInput;
+    using UnityEngine.AI;
 #endif
-    
+
     public class PrincipalARController : MonoBehaviour
     {
         public Camera FirstPersonCamera;
@@ -40,10 +41,8 @@ namespace GoogleARCore.PrincipalAR
         public GameObject SearchingForPlaneUI;
         private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
         private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
-        
         private bool m_IsQuitting = false;
         private bool placed = false;
-
         public void Update()
         {
             if (Input.GetKey(KeyCode.Escape))
@@ -52,68 +51,70 @@ namespace GoogleARCore.PrincipalAR
             }
 
             _QuitOnConnectionErrors();
-            
-            if (Session.Status != SessionStatus.Tracking)
-            {
-                const int lostTrackingSleepTimeout = 15;
-                Screen.sleepTimeout = lostTrackingSleepTimeout;
-                if (!m_IsQuitting && Session.Status.IsValid())
+
+
+                if (Session.Status != SessionStatus.Tracking && !placed)
                 {
-                    SearchingForPlaneUI.SetActive(true);
+                    const int lostTrackingSleepTimeout = 15;
+                    Screen.sleepTimeout = lostTrackingSleepTimeout;
+                    if (!m_IsQuitting && Session.Status.IsValid())
+                    {
+                        SearchingForPlaneUI.SetActive(true);
+                    }
+
+                    return;
                 }
 
-                return;
-            }
+                Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-            Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            
-            Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
-            for (int i = 0; i < m_NewPlanes.Count; i++)
-            {
-                GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
-                    transform);
-                planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
-            }
-            bool showSearchingUI = true;
-            Session.GetTrackables<TrackedPlane>(m_AllPlanes);
-            for (int i = 0; i < m_AllPlanes.Count; i++)
-            {
-                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+                Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
+                for (int i = 0; i < m_NewPlanes.Count; i++)
                 {
-                    showSearchingUI = false;
-                    break;
+                    GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
+                        transform);
+                    planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
                 }
-            }
-
-            SearchingForPlaneUI.SetActive(showSearchingUI);
-            
-            Touch touch;
-            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
-            {
-                return;
-            }
-            
-            TrackableHit hit;
-            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-                TrackableHitFlags.FeaturePointWithSurfaceNormal;
-
-            //FALTA ESTADO WAITING BOX // CUANDO ESTO OCURRA ESTADO CAMBIA A MENU
-            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit) && !placed)
-            {
-                
-                var streetObject = Instantiate(StreetPrefab, hit.Pose.position,hit.Pose.rotation);
-                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-                GameObject start = GameObject.FindGameObjectWithTag("Respawn");
-                var boxObject = Instantiate(BoxPrefab, start.transform.position + new Vector3(0,0.028f,0), hit.Pose.rotation);
-                if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
+                bool showSearchingUI = true;
+                Session.GetTrackables<TrackedPlane>(m_AllPlanes);
+                for (int i = 0; i < m_AllPlanes.Count; i++)
                 {
-                    Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
-                    cameraPositionSameY.y = hit.Pose.position.y;
-                    boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
+                    if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+                    {
+                        showSearchingUI = false;
+                        break;
+                    }
                 }
-                streetObject.transform.parent = anchor.transform;
-                boxObject.transform.parent = anchor.transform;
-                placed = true;
+
+                SearchingForPlaneUI.SetActive(showSearchingUI);
+
+                Touch touch;
+                if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+                {
+                    return;
+                }
+
+                TrackableHit hit;
+                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
+                    TrackableHitFlags.FeaturePointWithSurfaceNormal;
+            if (!placed)
+            {
+                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit) )
+                {
+                    var streetObject = Instantiate(StreetPrefab, hit.Pose.position, hit.Pose.rotation);
+                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                    streetObject.transform.parent = anchor.transform;
+                    surface.position = streetObject.transform.position;
+                    GameObject start = GameObject.FindGameObjectWithTag("Goal");
+                    var boxObject = Instantiate(BoxPrefab, start.transform.position, hit.Pose.rotation);
+                    if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
+                    {
+                        Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
+                        cameraPositionSameY.y = hit.Pose.position.y;
+                        boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
+                    }
+                    boxObject.transform.parent = anchor.transform;
+                    placed = true;
+                }
             }
 
         }
