@@ -26,10 +26,11 @@ namespace GoogleARCore.PrincipalAR
     using GoogleARCore;
     using UnityEngine;
     using UnityEngine.Rendering;
+    using UnityEngine.AI;
 
 #if UNITY_EDITOR
     using Input = InstantPreviewInput;
-    using UnityEngine.AI;
+    
 #endif
 
     public class PrincipalARController : MonoBehaviour
@@ -43,6 +44,7 @@ namespace GoogleARCore.PrincipalAR
         private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
         private bool m_IsQuitting = false;
         private bool placed = false;
+        public NavMeshSurface surface;
         public void Update()
         {
             if (Input.GetKey(KeyCode.Escape))
@@ -103,7 +105,7 @@ namespace GoogleARCore.PrincipalAR
                     var streetObject = Instantiate(StreetPrefab, hit.Pose.position, hit.Pose.rotation);
                     var anchor = hit.Trackable.CreateAnchor(hit.Pose);
                     streetObject.transform.parent = anchor.transform;
-                    surface.position = streetObject.transform.position;
+                    surface.BuildNavMesh();
                     GameObject start = GameObject.FindGameObjectWithTag("Goal");
                     var boxObject = Instantiate(BoxPrefab, start.transform.position, hit.Pose.rotation);
                     if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
