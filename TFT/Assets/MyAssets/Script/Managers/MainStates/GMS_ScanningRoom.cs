@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 #if UNITY_EDITOR
-using Input = InstantPreviewInput;
+using Input = GoogleARCore.InstantPreviewInput;
 #endif
 public class GMS_ScanningRoom : GMS_ControllerState
 {
