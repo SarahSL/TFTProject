@@ -36,12 +36,13 @@ namespace GoogleARCore.PrincipalAR
         public Camera FirstPersonCamera;
         public GameObject TrackedPlanePrefab;
         public GameObject BoxPrefab;
+        public GameObject StreetPrefab;
         public GameObject SearchingForPlaneUI;
         private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
         private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
         
         private bool m_IsQuitting = false;
-
+        private bool placed = false;
 
         public void Update()
         {
@@ -97,22 +98,24 @@ namespace GoogleARCore.PrincipalAR
                 TrackableHitFlags.FeaturePointWithSurfaceNormal;
 
             //FALTA ESTADO WAITING BOX // CUANDO ESTO OCURRA ESTADO CAMBIA A MENU
-            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit) && !placed)
             {
-                var boxObject = Instantiate(BoxPrefab, hit.Pose.position, hit.Pose.rotation);
                 
+                var streetObject = Instantiate(StreetPrefab, hit.Pose.position,hit.Pose.rotation);
                 var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-                
+                GameObject start = GameObject.FindGameObjectWithTag("Respawn");
+                var boxObject = Instantiate(BoxPrefab, start.transform.position + new Vector3(0,0.028f,0), hit.Pose.rotation);
                 if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
                 {
                     Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
                     cameraPositionSameY.y = hit.Pose.position.y;
-                    
                     boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
                 }
-                
+                streetObject.transform.parent = anchor.transform;
                 boxObject.transform.parent = anchor.transform;
+                placed = true;
             }
+
         }
         
         private void _QuitOnConnectionErrors()

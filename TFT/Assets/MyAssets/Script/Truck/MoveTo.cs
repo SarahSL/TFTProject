@@ -5,12 +5,19 @@ using UnityEngine.AI;
 
 public class MoveTo : MonoBehaviour
 {
-
     public Transform goal;
-
     void Start()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.destination = goal.position;
+       // if (Input.GetMouseButton(0)) 
+       // {
+
+            NavMeshAgent agent = GetComponent<NavMeshAgent>();
+            agent.destination = goal.position;
+       // }
+    }
+    private void Awake()
+    {
+
+        goal = GameObject.FindGameObjectWithTag("Goal").transform;
     }
 }
