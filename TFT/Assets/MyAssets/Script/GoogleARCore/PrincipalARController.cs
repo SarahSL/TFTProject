@@ -43,7 +43,6 @@ namespace GoogleARCore.PrincipalAR
         private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
         private bool m_IsQuitting = false;
         private bool placed = false;
-        private bool goalPlace = false;
 
         public void Update()
         {
