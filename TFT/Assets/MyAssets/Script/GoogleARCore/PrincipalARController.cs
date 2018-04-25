@@ -25,11 +25,12 @@ namespace GoogleARCore.PrincipalAR
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
-    using UnityEngine.Rendering;
     using UnityEngine.AI;
 
 #if UNITY_EDITOR
-    using Input = InstantPreviewInput;
+    // using Input = InstantPreviewInput;
+    //using UnityScript = InputManager;
+    
     
 #endif
 

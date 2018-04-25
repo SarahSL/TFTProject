@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228354623573718}
   - component: {fileID: 114574607129944484}
+  - component: {fileID: 114618628949962810}
   m_Layer: 0
   m_Name: street
   m_TagString: Untagged
@@ -594,7 +595,19 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.016666668
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: a5938d76afd184c47ac002b21647b894, type: 2}
+  m_NavMeshData: {fileID: 0}
+--- !u!114 &114618628949962810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651831687073988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f5ebe02bd3b914d9251e696a619aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaces: {fileID: 114574607129944484}
 --- !u!135 &135283060301157842
 SphereCollider:
   m_ObjectHideFlags: 1
