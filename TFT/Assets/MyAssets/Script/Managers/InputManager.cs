@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour {
 	// Use this for initialization
     
 	void Start () {
-        Debug.Log("HERE");
+        Debug.Log("HERE is the Input Manager");
 	}
 	
 	// Update is called once per frame

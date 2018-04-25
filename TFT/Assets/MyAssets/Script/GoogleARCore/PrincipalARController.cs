@@ -19,20 +19,17 @@
 //-----------------------------------------------------------------------
 
 // TO DO: REFACTOR
+#if UNITY_ANDROID
 
+#endif
 namespace GoogleARCore.PrincipalAR
 {
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
     using UnityEngine.AI;
+    
 
-#if UNITY_EDITOR
-    // using Input = InstantPreviewInput;
-    //using UnityScript = InputManager;
-    
-    
-#endif
 
     public class PrincipalARController : MonoBehaviour
     {
@@ -40,14 +37,17 @@ namespace GoogleARCore.PrincipalAR
         public GameObject TrackedPlanePrefab;
         public GameObject BoxPrefab;
         public GameObject StreetPrefab;
+        public Transform goal;
         public GameObject SearchingForPlaneUI;
         private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
         private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
         private bool m_IsQuitting = false;
         private bool placed = false;
-        public NavMeshSurface surface;
+        private bool goalPlace = false;
+
         public void Update()
         {
+          
             if (Input.GetKey(KeyCode.Escape))
             {
                 Application.Quit();
@@ -101,13 +101,13 @@ namespace GoogleARCore.PrincipalAR
                     TrackableHitFlags.FeaturePointWithSurfaceNormal;
             if (!placed)
             {
-                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit) )
+                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
                 {
                     var streetObject = Instantiate(StreetPrefab, hit.Pose.position, hit.Pose.rotation);
                     var anchor = hit.Trackable.CreateAnchor(hit.Pose);
                     streetObject.transform.parent = anchor.transform;
-                    surface.BuildNavMesh();
-                    GameObject start = GameObject.FindGameObjectWithTag("Goal");
+                    //surface.BuildNavMesh();
+                    GameObject start = GameObject.FindGameObjectWithTag("Respawn");
                     var boxObject = Instantiate(BoxPrefab, start.transform.position, hit.Pose.rotation);
                     if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
                     {
@@ -115,8 +115,20 @@ namespace GoogleARCore.PrincipalAR
                         cameraPositionSameY.y = hit.Pose.position.y;
                         boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
                     }
+                    //Debug.Log("GOAL POSITION ===================" + streetObject.name + "---------------" + streetObject.transform.position);
                     boxObject.transform.parent = anchor.transform;
                     placed = true;
+                }
+            }
+            else
+            {
+                RaycastHit h;
+                if (Physics.Raycast(FirstPersonCamera.ScreenPointToRay(Input.GetTouch(0).position), out h))
+                {
+                    goal = GameObject.FindGameObjectWithTag("Goal").transform;
+                    NavMeshAgent agent = FindObjectOfType<NavMeshAgent>();
+                    //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+                    agent.destination = goal.position;
                 }
             }
 
@@ -165,4 +177,6 @@ namespace GoogleARCore.PrincipalAR
             }
         }
     }
+
 }
+
