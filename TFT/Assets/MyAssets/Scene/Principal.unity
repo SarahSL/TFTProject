@@ -539,20 +539,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 320002237714884892, guid: 432347fc74f2ab642a88664eef1c5ac2,
-        type: 2}
-      propertyPath: m_SceneBindings.Array.data[2].key
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 320002237714884892, guid: 432347fc74f2ab642a88664eef1c5ac2,
-        type: 2}
-      propertyPath: m_SceneBindings.Array.data[5].key
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1628742999549688, guid: 432347fc74f2ab642a88664eef1c5ac2, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 432347fc74f2ab642a88664eef1c5ac2, type: 2}
   m_IsPrefabParent: 0
