@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class Testy : MonoBehaviour {
+public class Testy : MonoBehaviour
+{
 
     public Camera FirstPersonCamera;
     public GameObject TrackedPlanePrefab;
@@ -22,7 +23,7 @@ public class Testy : MonoBehaviour {
             Application.Quit();
         }
         _QuitOnConnectionErrors();
-        if( !placed)
+        if (!placed)
         {
             if (Session.Status != SessionStatus.Tracking)
             {
@@ -30,7 +31,8 @@ public class Testy : MonoBehaviour {
                 Screen.sleepTimeout = lostTrackingSleepTimeout;
                 if (!m_IsQuitting && Session.Status.IsValid())
                 {
-                    foreach(GameObject TestyCanva in TestyCanvas){
+                    foreach (GameObject TestyCanva in TestyCanvas)
+                    {
 
                         TestyCanva.SetActive(true);
                     }
@@ -78,7 +80,7 @@ public class Testy : MonoBehaviour {
             }
 
         }
-        
+
     }
     private void _QuitOnConnectionErrors()
     {
@@ -122,8 +124,8 @@ public class Testy : MonoBehaviour {
             }));
         }
     }
-     public void OnTogglePlanes(bool flag)
-        {
+    public void OnTogglePlanes(bool flag)
+    {
         foreach (GameObject plane in GameObject.FindGameObjectsWithTag("plane"))
         {
             Renderer r = plane.GetComponent<Renderer>();

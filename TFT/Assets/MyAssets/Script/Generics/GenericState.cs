@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GenericState <T> : ScriptableObject {
+public abstract class GenericState<T> : ScriptableObject
+{
 
     public abstract void Enter();
     public abstract void Exit();

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManagerMain : MonoBehaviour {
+public class GameManagerMain : MonoBehaviour
+{
 
     #region state management
     private void SM_GoToState(GMS_ControllerState newState)

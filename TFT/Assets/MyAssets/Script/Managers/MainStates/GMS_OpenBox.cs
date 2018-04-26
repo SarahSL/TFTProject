@@ -19,5 +19,5 @@ public class GMS_OpenBox : GMS_ControllerState
     {
         throw new NotImplementedException();
     }
-    
+
 }

@@ -19,5 +19,5 @@ public class GMS_WaitingBox : GMS_ControllerState
     {
         throw new NotImplementedException();
     }
-    
+
 }

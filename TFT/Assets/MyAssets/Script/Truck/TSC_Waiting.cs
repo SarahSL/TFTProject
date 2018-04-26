@@ -16,7 +16,7 @@ public class TSC_Waiting : TSC_TruckControllerState
     {
         Debug.Log("TRUCK STATE EXIT WAITING");
     }
-    
+
 
     public override void Update()
     {

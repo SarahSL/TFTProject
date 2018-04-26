@@ -22,11 +22,11 @@ public class GMS_ScanningRoom : GMS_ControllerState
 
     public override void Exit()
     {
-        
+
     }
 
     public override void Update()
     {
-        
+
     }
 }
