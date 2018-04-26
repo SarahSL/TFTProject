@@ -7,17 +7,17 @@ public class GMS_OpenBox : GMS_ControllerState
 {
     public override void Enter()
     {
-        throw new NotImplementedException();
+        Debug.Log("HERE WE ARE__ : OpenBox.Enter-------");
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+        Debug.Log("HERE WE ARE__ : OpenBox.Exit-------");
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+        Debug.Log("HERE WE ARE__ : OpenBox.Update-------");
     }
 
 }

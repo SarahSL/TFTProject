@@ -12,7 +12,9 @@ public class PrincipalARController : MonoBehaviour
     private bool m_IsQuitting = false;
     [HideInInspector]
     public bool placed = false;
+
     public GameObject boxObject;
+
     public PrincipalARControllerReferences m_references;
     public PrincipalARControllerInstanciables m_instanciables;
 

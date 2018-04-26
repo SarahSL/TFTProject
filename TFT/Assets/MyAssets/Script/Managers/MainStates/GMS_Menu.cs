@@ -7,16 +7,19 @@ public class GMS_Menu : GMS_ControllerState
 {
     public override void Enter()
     {
-        throw new NotImplementedException();
+
+        Debug.Log("HERE WE ARE__ : Menu.Enter-------");
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+
+        Debug.Log("HERE WE ARE__ : Menu.Exit-------");
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+
+        Debug.Log("HERE WE ARE__ : Menu.Update-------");
     }
 }

@@ -7,17 +7,19 @@ public class GMS_WaitingBox : GMS_ControllerState
 {
     public override void Enter()
     {
-        throw new NotImplementedException();
+        Debug.Log("HERE WE ARE__ : WaitingBox.Enter-------");
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+
+        Debug.Log("HERE WE ARE__ : WaitingBox.Exit-------");
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+
+        Debug.Log("HERE WE ARE__ : WaitingBox.Update-------"); 
     }
 
 }

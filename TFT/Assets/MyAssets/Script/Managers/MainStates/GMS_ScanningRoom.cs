@@ -20,7 +20,8 @@ public class GMS_ScanningRoom : GMS_ControllerState
 
     public override void Exit()
     {
-        Debug.Log("FIN OF SCANNING ROOM");
+
+        Debug.Log("HERE WE ARE__ : ScanningRomm.Exit-------");
     }
 
     public override void Update()
@@ -33,7 +34,7 @@ public class GMS_ScanningRoom : GMS_ControllerState
         }
         else
         {
-            m_target.SM_GoToOpenBox();
+            m_target.SM_GoToWaitingBox();
         }
     }
 }
