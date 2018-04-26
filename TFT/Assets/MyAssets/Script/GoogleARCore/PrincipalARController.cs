@@ -19,100 +19,118 @@
 //-----------------------------------------------------------------------
 
 // TO DO: REFACTOR
+#if UNITY_ANDROID
 
+#endif
 namespace GoogleARCore.PrincipalAR
 {
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
-    using UnityEngine.Rendering;
-
-#if UNITY_EDITOR
-    using Input = InstantPreviewInput;
-#endif
+    using UnityEngine.AI;
     
+
+
     public class PrincipalARController : MonoBehaviour
     {
         public Camera FirstPersonCamera;
         public GameObject TrackedPlanePrefab;
         public GameObject BoxPrefab;
+        public GameObject StreetPrefab;
+        public Transform goal;
         public GameObject SearchingForPlaneUI;
         private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
         private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
-        
         private bool m_IsQuitting = false;
-
+        private bool placed = false;
 
         public void Update()
         {
+          
             if (Input.GetKey(KeyCode.Escape))
             {
                 Application.Quit();
             }
 
             _QuitOnConnectionErrors();
-            
-            if (Session.Status != SessionStatus.Tracking)
-            {
-                const int lostTrackingSleepTimeout = 15;
-                Screen.sleepTimeout = lostTrackingSleepTimeout;
-                if (!m_IsQuitting && Session.Status.IsValid())
+
+
+                if (Session.Status != SessionStatus.Tracking && !placed)
                 {
-                    SearchingForPlaneUI.SetActive(true);
+                    const int lostTrackingSleepTimeout = 15;
+                    Screen.sleepTimeout = lostTrackingSleepTimeout;
+                    if (!m_IsQuitting && Session.Status.IsValid())
+                    {
+                        SearchingForPlaneUI.SetActive(true);
+                    }
+
+                    return;
                 }
 
-                return;
-            }
+                Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-            Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            
-            Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
-            for (int i = 0; i < m_NewPlanes.Count; i++)
-            {
-                GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
-                    transform);
-                planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
-            }
-            bool showSearchingUI = true;
-            Session.GetTrackables<TrackedPlane>(m_AllPlanes);
-            for (int i = 0; i < m_AllPlanes.Count; i++)
-            {
-                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+                Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
+                for (int i = 0; i < m_NewPlanes.Count; i++)
                 {
-                    showSearchingUI = false;
-                    break;
+                    GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
+                        transform);
+                    planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+                }
+                bool showSearchingUI = true;
+                Session.GetTrackables<TrackedPlane>(m_AllPlanes);
+                for (int i = 0; i < m_AllPlanes.Count; i++)
+                {
+                    if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+                    {
+                        showSearchingUI = false;
+                        break;
+                    }
+                }
+
+                SearchingForPlaneUI.SetActive(showSearchingUI);
+
+                Touch touch;
+                if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+                {
+                    return;
+                }
+
+                TrackableHit hit;
+                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
+                    TrackableHitFlags.FeaturePointWithSurfaceNormal;
+            if (!placed)
+            {
+                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+                {
+                    var streetObject = Instantiate(StreetPrefab, hit.Pose.position, hit.Pose.rotation);
+                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                    streetObject.transform.parent = anchor.transform;
+                    //surface.BuildNavMesh();
+                    GameObject start = GameObject.FindGameObjectWithTag("Respawn");
+                    var boxObject = Instantiate(BoxPrefab, start.transform.position, hit.Pose.rotation);
+                    if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
+                    {
+                        Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
+                        cameraPositionSameY.y = hit.Pose.position.y;
+                        boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
+                    }
+                    //Debug.Log("GOAL POSITION ===================" + streetObject.name + "---------------" + streetObject.transform.position);
+                    boxObject.transform.parent = anchor.transform;
+                    placed = true;
+                }
+            }
+            else
+            {
+                RaycastHit h;
+                if (Physics.Raycast(FirstPersonCamera.ScreenPointToRay(Input.GetTouch(0).position), out h))
+                {
+                    goal = GameObject.FindGameObjectWithTag("Goal").transform;
+                    NavMeshAgent agent = FindObjectOfType<NavMeshAgent>();
+                    //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+                    agent.destination = goal.position;
                 }
             }
 
-            SearchingForPlaneUI.SetActive(showSearchingUI);
-            
-            Touch touch;
-            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
-            {
-                return;
-            }
-            
-            TrackableHit hit;
-            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-                TrackableHitFlags.FeaturePointWithSurfaceNormal;
-
-            //FALTA ESTADO WAITING BOX // CUANDO ESTO OCURRA ESTADO CAMBIA A MENU
-            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
-            {
-                var boxObject = Instantiate(BoxPrefab, hit.Pose.position, hit.Pose.rotation);
-                
-                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-                
-                if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
-                {
-                    Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
-                    cameraPositionSameY.y = hit.Pose.position.y;
-                    
-                    boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
-                }
-                
-                boxObject.transform.parent = anchor.transform;
-            }
         }
         
         private void _QuitOnConnectionErrors()
@@ -158,4 +176,6 @@ namespace GoogleARCore.PrincipalAR
             }
         }
     }
+
 }
+

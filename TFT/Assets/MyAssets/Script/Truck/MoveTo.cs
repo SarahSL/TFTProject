@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class MoveTo : MonoBehaviour
 {
 
+    private NavMeshAgent agent;
     public Transform goal;
-
-    void Start()
+    public void Move()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent = FindObjectOfType<NavMeshAgent>();
         agent.destination = goal.position;
     }
 }
