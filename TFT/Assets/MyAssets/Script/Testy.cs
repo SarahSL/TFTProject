@@ -73,6 +73,7 @@ public class Testy : MonoBehaviour {
                 PlayableDirector m_director = testyObject.GetComponent<PlayableDirector>();
                 m_director.initialTime = 0;
                 m_director.Play();
+                OnTogglePlanes(false);
 
             }
 
@@ -119,6 +120,16 @@ public class Testy : MonoBehaviour {
                     message, 0);
                 toastObject.Call("show");
             }));
+        }
+    }
+     public void OnTogglePlanes(bool flag)
+        {
+        foreach (GameObject plane in GameObject.FindGameObjectsWithTag("plane"))
+        {
+            Renderer r = plane.GetComponent<Renderer>();
+            TrackedPlaneVisualizer t = plane.GetComponent<TrackedPlaneVisualizer>();
+            r.enabled = flag;
+            t.enabled = flag;
         }
     }
 }
