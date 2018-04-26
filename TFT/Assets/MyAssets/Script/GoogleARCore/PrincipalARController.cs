@@ -1,7 +1,4 @@
-﻿#if UNITY_ANDROID
-
-#endif
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GoogleARCore;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,20 +6,18 @@ using GoogleARCore.PrincipalAR;
 
 public class PrincipalARController : MonoBehaviour
 {
-    public Camera FirstPersonCamera;
-    public GameObject TrackedPlanePrefab;
-    public GameObject BoxPrefab;
-    public GameObject StreetPrefab;
-    public Transform goal;
-    public GameObject SearchingForPlaneUI;
+    
     private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
     private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
     private bool m_IsQuitting = false;
-    private bool placed = false;
+    [HideInInspector]
+    public bool placed = false;
+    public GameObject boxObject;
+    public PrincipalARControllerReferences m_references;
+    public PrincipalARControllerInstanciables m_instanciables;
 
-    public void Update()
+    public void Scan()
     {
-
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
@@ -38,7 +33,7 @@ public class PrincipalARController : MonoBehaviour
                 Screen.sleepTimeout = lostTrackingSleepTimeout;
                 if (!m_IsQuitting && Session.Status.IsValid())
                 {
-                    SearchingForPlaneUI.SetActive(true);
+                    m_references.SearchingForPlaneUI.SetActive(true);
                 }
 
                 return;
@@ -49,7 +44,7 @@ public class PrincipalARController : MonoBehaviour
             Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
             for (int i = 0; i < m_NewPlanes.Count; i++)
             {
-                GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
+                GameObject planeObject = Instantiate(m_references.TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
                     transform);
                 planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
             }
@@ -64,7 +59,7 @@ public class PrincipalARController : MonoBehaviour
                 }
             }
 
-            SearchingForPlaneUI.SetActive(showSearchingUI);
+            m_references.SearchingForPlaneUI.SetActive(showSearchingUI);
 
             Touch touch;
             if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
@@ -77,14 +72,11 @@ public class PrincipalARController : MonoBehaviour
                 TrackableHitFlags.FeaturePointWithSurfaceNormal;
             if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
             {
-                var streetObject = Instantiate(StreetPrefab, hit.Pose.position, hit.Pose.rotation);
                 var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-                streetObject.transform.parent = anchor.transform;
-                GameObject start = GameObject.FindGameObjectWithTag("Respawn");
-                var boxObject = Instantiate(BoxPrefab, start.transform.position, hit.Pose.rotation);
+                boxObject = Instantiate(m_instanciables.BoxPrefab, hit.Pose.position, hit.Pose.rotation);
                 if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
                 {
-                    Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
+                    Vector3 cameraPositionSameY = m_references.FirstPersonCamera.transform.position;
                     cameraPositionSameY.y = hit.Pose.position.y;
                     boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
                 }
@@ -92,18 +84,6 @@ public class PrincipalARController : MonoBehaviour
                 placed = true;
             }
 
-        }
-        else
-        {
-
-            RaycastHit h;
-            if (Physics.Raycast(FirstPersonCamera.ScreenPointToRay(Input.GetTouch(0).position), out h))
-            {
-                goal = GameObject.FindGameObjectWithTag("Goal").transform;
-                NavMeshAgent agent = FindObjectOfType<NavMeshAgent>();
-                agent.destination = goal.position;
-                OnTogglePlanes(false);
-            }
         }
     }
     public void OnTogglePlanes(bool flag)
@@ -157,6 +137,21 @@ public class PrincipalARController : MonoBehaviour
                 toastObject.Call("show");
             }));
         }
+    }
+
+
+    [System.Serializable]
+    public class PrincipalARControllerInstanciables
+    {
+        public GameObject BoxPrefab;
+    }
+    [System.Serializable]
+    public class PrincipalARControllerReferences
+    {
+        public Camera FirstPersonCamera;
+        public GameObject TrackedPlanePrefab;
+        
+        public GameObject SearchingForPlaneUI;
     }
 }
 

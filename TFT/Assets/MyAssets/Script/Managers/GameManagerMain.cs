@@ -5,6 +5,11 @@ using UnityEngine;
 public class GameManagerMain : MonoBehaviour
 {
 
+public    GameObject arTag;
+    private void Update()
+    {
+       m_states.m_current.Update();
+    }
     #region state management
     private void SM_GoToState(GMS_ControllerState newState)
     {
