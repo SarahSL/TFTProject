@@ -11,7 +11,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Moon
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Moon-Icon-1
+    second: {fileID: 2800000, guid: 6bdb00a3dfb4a27499a904ffd54a83c2, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
