@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8c887a4fd210920479f51792e546e4c8
-timeCreated: 1525356604
+guid: 91cd5638abdc2554ba6804a20e4e60e2
+timeCreated: 1526546040
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,17 +8,15 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: 01 - Defaultff
-    2100002: 13 - Default
     2300000: //RootNode
     3300000: //RootNode
-    4300000: OrangeTruck
-    4300002: truckOrange
+    4300000: tabletWareLink
   externalObjects:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: van
-    second: {fileID: 2800000, guid: 1986b35ea67f65b42b96f7b4dde3e514, type: 3}
+      name: ipad_alta_login_inside
+    second: {fileID: 2800000, guid: 7ce468db430fc724cae05c8caa7b4714, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
