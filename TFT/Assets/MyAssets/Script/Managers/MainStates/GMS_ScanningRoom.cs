@@ -14,19 +14,16 @@ public class GMS_ScanningRoom : GMS_ControllerState
     
     public override void Enter()
     {
-        Debug.Log("HERE WE ARE__ : ScanningRomm.Enter-------");
         principalARController = FindObjectOfType<PrincipalARController>();
     }
 
     public override void Exit()
     {
-
-        Debug.Log("HERE WE ARE__ : ScanningRomm.Exit-------");
+       
     }
 
     public override void Update()
     {
-        Debug.Log("HERE WE ARE__ : ScanningRomm.Update-------");
         placed = principalARController.placed;
         if (!placed)
         {
