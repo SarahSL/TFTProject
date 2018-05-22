@@ -3,7 +3,9 @@ using GoogleARCore;
 using UnityEngine;
 using UnityEngine.AI;
 using GoogleARCore.PrincipalAR;
-
+#if UNITY_EDITOR
+    using Input = GoogleARCore.InstantPreviewInput;
+#endif
 public class PrincipalARController : MonoBehaviour
 {
     
