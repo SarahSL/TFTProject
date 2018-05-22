@@ -77,7 +77,12 @@ public class PrincipalARController : MonoBehaviour
             if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
             {
                 var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-                boxObject = Instantiate(m_instanciables.BoxPrefab, hit.Pose.position, hit.Pose.rotation);
+                boxObject = Instantiate(m_instanciables.BoxPrefab, hit.Pose.position,Quaternion.identity);
+
+                boxObject.transform.LookAt(m_references.FirstPersonCamera.transform.position);
+                boxObject.transform.eulerAngles = new Vector3(0, boxObject.transform.eulerAngles.y, 0);
+                //boxObject.transform.eulerAngles = new Vector3(0, 0,180);
+
                 if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
                 {
                     Vector3 cameraPositionSameY = m_references.FirstPersonCamera.transform.position;
