@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 114540239190773560}
   - {fileID: 114642701564188130}
   - {fileID: 114677959586312544}
+  - {fileID: 114088270422258770}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -6004,6 +6005,25 @@ MonoBehaviour:
   m_RemoveStartOffset: 1
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &114088270422258770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1544527758, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: Lamps
+  m_EditorClassIdentifier: 
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_AnimClip: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Version: 1
 --- !u!114 &114099827353618096
 MonoBehaviour:
   m_ObjectHideFlags: 1
