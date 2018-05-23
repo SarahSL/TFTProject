@@ -18,6 +18,7 @@ public class GMS_WaitingBox : GMS_ControllerState
 
     public override void Exit()
     {
+
         m_target.SM_GoToMenu();
     }
 
