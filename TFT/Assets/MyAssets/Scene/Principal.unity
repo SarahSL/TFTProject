@@ -796,6 +796,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 320864650561210766, guid: 919785b00918c984490b39c62c746d8d,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[13].value
+      value: 
+      objectReference: {fileID: 2142549981}
+    - target: {fileID: 1361650217991508, guid: 919785b00918c984490b39c62c746d8d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 919785b00918c984490b39c62c746d8d, type: 2}
   m_IsPrefabParent: 0
@@ -964,6 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placed: 0
   boxObject: {fileID: 0}
+  videoObject: {fileID: 0}
   m_references:
     FirstPersonCamera: {fileID: 1265635998}
     TrackedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
@@ -972,6 +982,7 @@ MonoBehaviour:
   m_instanciables:
     BoxPrefab: {fileID: 1361650217991508, guid: 919785b00918c984490b39c62c746d8d,
       type: 2}
+    VideoPrefab: {fileID: 2142549981}
 --- !u!1001 &2142549980
 Prefab:
   m_ObjectHideFlags: 0
@@ -1172,3 +1183,26 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf49c9d1adf9e0e4bb86b72666420e75, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2142549981 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1459012619690508, guid: cf49c9d1adf9e0e4bb86b72666420e75,
+    type: 2}
+  m_PrefabInternal: {fileID: 2142549980}
+--- !u!95 &2142549982
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142549981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

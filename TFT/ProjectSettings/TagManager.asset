@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Goal
   - Plane
+  - Video
+  - Game
   layers:
   - Default
   - TransparentFX

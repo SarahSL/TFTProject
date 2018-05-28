@@ -16,6 +16,7 @@ public class PrincipalARController : MonoBehaviour
     public bool placed = false;
 
     public GameObject boxObject;
+    public GameObject videoObject;
 
     public PrincipalARControllerReferences m_references;
     public PrincipalARControllerInstanciables m_instanciables;
@@ -78,9 +79,15 @@ public class PrincipalARController : MonoBehaviour
             {
                 var anchor = hit.Trackable.CreateAnchor(hit.Pose);
                 boxObject = Instantiate(m_instanciables.BoxPrefab, hit.Pose.position,Quaternion.identity);
-
+                videoObject = Instantiate(m_instanciables.VideoPrefab, hit.Pose.position, Quaternion.identity);
+                videoObject.SetActive(false);
                 boxObject.transform.LookAt(m_references.FirstPersonCamera.transform.position);
                 boxObject.transform.eulerAngles = new Vector3(0, boxObject.transform.eulerAngles.y, 0);
+
+                videoObject.transform.LookAt(m_references.FirstPersonCamera.transform.position);
+                videoObject.transform.eulerAngles = new Vector3(0, boxObject.transform.eulerAngles.y, 0);
+
+
                 //boxObject.transform.eulerAngles = new Vector3(0, 0,180);
 
                 if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
@@ -88,8 +95,11 @@ public class PrincipalARController : MonoBehaviour
                     Vector3 cameraPositionSameY = m_references.FirstPersonCamera.transform.position;
                     cameraPositionSameY.y = hit.Pose.position.y;
                     boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
+                    videoObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
                 }
                 boxObject.transform.parent = anchor.transform;
+                videoObject.transform.parent = anchor.transform;
+                
                 placed = true;
             }
 
@@ -153,6 +163,9 @@ public class PrincipalARController : MonoBehaviour
     public class PrincipalARControllerInstanciables
     {
         public GameObject BoxPrefab;
+        public GameObject VideoPrefab;
+
+
     }
     [System.Serializable]
     public class PrincipalARControllerReferences
