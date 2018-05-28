@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,7 +39,6 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
-  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -55,10 +54,11 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -259,6 +259,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114800451089080514, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: firstPersonCamera
+      value: 
+      objectReference: {fileID: 1265635998}
+    - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: arTag
+      value: 
+      objectReference: {fileID: 2127609426}
     - target: {fileID: 114234665394340054, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
       propertyPath: principalArCore
@@ -269,9 +279,9 @@ Prefab:
       propertyPath: testyController
       value: 
       objectReference: {fileID: 293846660}
-    - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
+    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
-      propertyPath: arTag
+      propertyPath: arTagGameplay
       value: 
       objectReference: {fileID: 2127609426}
     m_RemovedComponents: []
@@ -900,7 +910,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2127011749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,4 +1214,3 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

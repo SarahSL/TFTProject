@@ -11,55 +11,53 @@ public class GMS_Menu : GMS_ControllerState
     public GameObject menuGameObject;
     public PrincipalARController principalARController;
     public PlayableDirector m_director;
-    private bool playing = false;
+    public InputManager inputManager;
+
     public override void Enter()
     {
         // boxObject = FindObjectOfType<PrincipalARController>().boxObject;
         // menuGameObject = boxObject
-        playing = false;
+        inputManager = FindObjectOfType<InputManager>();
         principalARController = FindObjectOfType<PrincipalARController>();
+
+
     }
 
     public override void Exit()
     {
-
-        Debug.Log("HERE WE ARE__ : Menu.Exit-------");
+        principalARController.boxObject.SetActive(false);
     }
 
     public override void Update()
     {
-        Debug.Log("HERE WE ARE__ : Menu.Update-------");
-        if (!playing)
-        {
-            RaycastHit h;
-            if (Physics.Raycast(principalARController.m_references.FirstPersonCamera.ScreenPointToRay(Input.GetTouch(0).position), out h))
-            {
-                string pos = h.collider.tag;
-                if (pos == "Video")
-                {
-                    principalARController.boxObject.SetActive(false);
-                    principalARController.videoObject.SetActive(true);
-                    m_director = principalARController.videoObject.GetComponent<PlayableDirector>();
-                    m_director.initialTime = 0;
-                    m_director.Play();
-                    playing = true;
-                }
-                else if (pos == "Game")
-                {
-                    principalARController.boxObject.SetActive(false);
-                }
+    }
 
+    private void MenuState(Vector2 hit)
+    {
+        RaycastHit h;
+
+        if (Physics.Raycast(principalARController.m_references.FirstPersonCamera.ScreenPointToRay(hit), out h))
+        {
+            string pos = h.collider.tag;
+            if (pos == "Video")
+            {
+                m_target.SM_GoToVideo();
+            }
+            else if (pos == "Game")
+            {
+                m_target.SM_GoToPlaying();
             }
 
-        }
-        else
-        {
-            if (m_director.state != PlayState.Playing)
-            {
-                principalARController.videoObject.SetActive(false);
-                m_target.SM_GoToWaitingBox();
-            }
         }
 
     }
+    void OnEnable()
+    {
+        inputManager.TouchAction += MenuState;
+    }
+    void OnDisable()
+    {
+        inputManager.TouchAction += MenuState;
+    }
+
 }
