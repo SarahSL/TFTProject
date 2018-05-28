@@ -23,12 +23,6 @@ public class PrincipalARController : MonoBehaviour
 
     public void Scan()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
-        _QuitOnConnectionErrors();
 
         if (!placed)
         {
@@ -86,9 +80,7 @@ public class PrincipalARController : MonoBehaviour
 
                 videoObject.transform.LookAt(m_references.FirstPersonCamera.transform.position);
                 videoObject.transform.eulerAngles = new Vector3(0, boxObject.transform.eulerAngles.y, 0);
-
-
-                //boxObject.transform.eulerAngles = new Vector3(0, 0,180);
+                
 
                 if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
                 {
@@ -101,20 +93,42 @@ public class PrincipalARController : MonoBehaviour
                 videoObject.transform.parent = anchor.transform;
                 
                 placed = true;
+                foreach (GameObject plane in GameObject.FindGameObjectsWithTag("Plane"))
+                {
+                    Renderer r = plane.GetComponent<Renderer>();
+                    TrackedPlaneVisualizer t = plane.GetComponent<TrackedPlaneVisualizer>();
+                    r.enabled = false;
+                    t.enabled = false;
+                }
             }
 
         }
     }
-    public void OnTogglePlanes(bool flag)
+
+
+    [System.Serializable]
+    public class PrincipalARControllerInstanciables
     {
-        foreach (GameObject plane in GameObject.FindGameObjectsWithTag("plane"))
-        {
-            Renderer r = plane.GetComponent<Renderer>();
-            TrackedPlaneVisualizer t = plane.GetComponent<TrackedPlaneVisualizer>();
-            r.enabled = flag;
-            t.enabled = flag;
-        }
+        public GameObject BoxPrefab;
+        public GameObject VideoPrefab;
+
+
     }
+    [System.Serializable]
+    public class PrincipalARControllerReferences
+    {
+        public Camera FirstPersonCamera;
+        public GameObject TrackedPlanePrefab;
+
+        public GameObject SearchingForPlaneUI;
+    }
+
+
+
+
+
+    // EXIT FOR ANDROID ARCORE && ERRORS
+
     private void _QuitOnConnectionErrors()
     {
         if (m_IsQuitting)
@@ -157,23 +171,17 @@ public class PrincipalARController : MonoBehaviour
             }));
         }
     }
-
-
-    [System.Serializable]
-    public class PrincipalARControllerInstanciables
+    
+    private void Update()
     {
-        public GameObject BoxPrefab;
-        public GameObject VideoPrefab;
 
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
+        _QuitOnConnectionErrors();
     }
-    [System.Serializable]
-    public class PrincipalARControllerReferences
-    {
-        public Camera FirstPersonCamera;
-        public GameObject TrackedPlanePrefab;
-        
-        public GameObject SearchingForPlaneUI;
-    }
+
 }
 

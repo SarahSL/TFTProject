@@ -19,16 +19,6 @@ public class GMS_ScanningRoom : GMS_ControllerState
 
     public override void Exit()
     {
-        if (placed)
-        {
-            foreach (GameObject plane in GameObject.FindGameObjectsWithTag("Plane"))
-            {
-                Renderer r = plane.GetComponent<Renderer>();
-                TrackedPlaneVisualizer t = plane.GetComponent<TrackedPlaneVisualizer>();
-                r.enabled = false;
-                t.enabled = false;
-            }
-        }
         
     }
 

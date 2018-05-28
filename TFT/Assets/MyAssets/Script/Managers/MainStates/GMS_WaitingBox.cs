@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -13,6 +11,7 @@ public class GMS_WaitingBox : GMS_ControllerState
         Debug.Log("HERE WE ARE__ : WaitingBox.ENTER-------");
         principalARController = FindObjectOfType<PrincipalARController>();
         principalARController.boxObject.SetActive(true);
+
         m_director = principalARController.boxObject.GetComponent<PlayableDirector>();
         m_director.initialTime = 0;
         m_director.Play();

@@ -31,11 +31,6 @@ public class GMS_Menu : GMS_ControllerState
         Debug.Log("HERE WE ARE__ : Menu.Update-------");
         if (!playing)
         {
-            Touch touch;
-            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
-            {
-                return;
-            }
             RaycastHit h;
             if (Physics.Raycast(principalARController.m_references.FirstPersonCamera.ScreenPointToRay(Input.GetTouch(0).position), out h))
             {
@@ -67,20 +62,4 @@ public class GMS_Menu : GMS_ControllerState
         }
 
     }
-    /*
-    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-    boxObject = Instantiate(m_instanciables.BoxPrefab, hit.Pose.position, Quaternion.identity);
-
-    boxObject.transform.LookAt(m_references.FirstPersonCamera.transform.position);
-    boxObject.transform.eulerAngles = new Vector3(0, boxObject.transform.eulerAngles.y, 0);
-    //boxObject.transform.eulerAngles = new Vector3(0, 0,180);
-
-    if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
-    {
-        Vector3 cameraPositionSameY = m_references.FirstPersonCamera.transform.position;
-        cameraPositionSameY.y = hit.Pose.position.y;
-        boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
-    }
-    boxObject.transform.parent = anchor.transform;
-    */
 }

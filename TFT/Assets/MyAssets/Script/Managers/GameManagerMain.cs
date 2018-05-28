@@ -43,6 +43,7 @@ public    GameObject arTag;
         m_states.m_scanningroom = ScriptableObject.CreateInstance<GMS_ScanningRoom>().Init(this) as GMS_ScanningRoom;
         m_states.m_openbox = ScriptableObject.CreateInstance<GMS_OpenBox>().Init(this) as GMS_OpenBox;
         m_states.m_waitingbox = ScriptableObject.CreateInstance<GMS_WaitingBox>().Init(this) as GMS_WaitingBox;
+        //m_states.m_playing ScriptableObject.CreateInstance<GMS_Playing>().Init(this) as GMS_Playing;
         m_states.m_current = m_states.m_scanningroom;
         SM_GoToScanningRoom();
     }
@@ -59,5 +60,7 @@ public    GameObject arTag;
         public GMS_ScanningRoom m_scanningroom;
         public GMS_WaitingBox m_waitingbox;
         public GMS_OpenBox m_openbox;
+       // public GMS_Playing m_playing;
+       // public GMS_Video m_video;
     }
 }
