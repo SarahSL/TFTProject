@@ -24,16 +24,6 @@ public class InputManager : MonoBehaviour
                 TouchAction(Input.GetTouch(0).position);
             }
         }
-        /*
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (TouchAction != null)
-            {
-                TouchAction(new Vector2(0f, 0f));
-            }
-
-        }
-        */
 
     }
 

@@ -8,7 +8,6 @@ public class GMS_WaitingBox : GMS_ControllerState
     public PlayableDirector m_director;
     public override void Enter()
     {
-        Debug.Log("HERE WE ARE__ : WaitingBox.ENTER-------");
         principalARController = FindObjectOfType<PrincipalARController>();
         principalARController.boxObject.SetActive(true);
 
@@ -28,7 +27,6 @@ public class GMS_WaitingBox : GMS_ControllerState
 
         if (m_director.state != PlayState.Playing)
         {
-            Debug.Log("---------------SM GO TO THE MENU");
             m_target.SM_GoToMenu();
         }
 

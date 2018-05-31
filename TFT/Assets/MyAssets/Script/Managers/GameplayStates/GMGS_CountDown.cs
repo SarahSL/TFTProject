@@ -9,36 +9,41 @@ public class GMGS_CountDown : GMGS_GameplayControllerStates
 {
     public PrincipalARController principalArCore;
     private GameObject countDownCanvas;
+
     private Text countDownText;
     private float timeLeft;
 
     public override void Enter()
     {
         principalArCore = FindObjectOfType<PrincipalARController>();
-        countDownText = principalArCore.boardObject.GetComponent<Text>();
-        countDownCanvas = principalArCore.boardObject.GetComponent<Canvas>().gameObject;
-        countDownCanvas.SetActive(true);
+        countDownCanvas = principalArCore.boardObject.GetComponentInChildren<Canvas>().gameObject;
+        
+        countDownText = countDownCanvas.GetComponentInChildren<Text>();
+        countDownText.text = "3";
         timeLeft = 3.0f;
 
     }
 
     public override void Exit()
     {
+        countDownText.text = "";
         countDownCanvas.SetActive(false);
 
     }
 
     public override void Update()
     {
+
         if (timeLeft < 0)
         {
+            countDownText.text = "0";
             m_target.SMG_GoToPlaying();
         }
-        if (timeLeft < 1)
+        else if (timeLeft < 1)
         {
             countDownText.text = "1";
         }
-        if (timeLeft < 2)
+        else if (timeLeft < 2)
         {
             countDownText.text = "2";
         }
