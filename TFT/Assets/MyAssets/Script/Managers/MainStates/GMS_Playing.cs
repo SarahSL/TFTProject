@@ -21,7 +21,10 @@ public class GMS_Playing : GMS_ControllerState
 
     public override void Update()
     {
-        m_target.SM_GoToInactive();
-        gameMangaerGameplay.SMG_GoToInitGame();
+        if(gameMangaerGameplay.m_states.m_current == gameMangaerGameplay.m_states.m_inactive)
+        {
+            gameMangaerGameplay.SMG_GoToInitGame();
+        }
+            
     }
 }

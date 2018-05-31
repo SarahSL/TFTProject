@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GMGS_Inactive : GMGS_GameplayControllerStates
+public class GPS_Playing_Waiting : GPS_GamePlayingState
 {
+
     public override void Enter()
     {
         

@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("HERE is the Input Manager");
+
     }
 
     // Update is called once per frame
@@ -20,8 +20,21 @@ public class InputManager : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (TouchAction != null)
+            {
                 TouchAction(Input.GetTouch(0).position);
+            }
         }
+        /*
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (TouchAction != null)
+            {
+                TouchAction(new Vector2(0f, 0f));
+            }
+
+        }
+        */
+
     }
 
 

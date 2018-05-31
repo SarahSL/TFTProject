@@ -33,14 +33,6 @@ public class GameManagerGameplay : MonoBehaviour
     {
         SM_GoToState(m_states.m_playing);
     }
-    public void SMG_GoToPlaying_Waiting()
-    {
-        SM_GoToState(m_states.m_playing_waiting);
-    }
-    public void SMG_GoToPlaying_TruckSelected()
-    {
-        SM_GoToState(m_states.m_playing_truckSelected);
-    }
     public void SMG_GoToPause()
     {
         SM_GoToState(m_states.m_pause);
@@ -59,9 +51,7 @@ public class GameManagerGameplay : MonoBehaviour
         m_states.m_countDown = ScriptableObject.CreateInstance<GMGS_CountDown>().Init(this) as GMGS_CountDown;
         
         m_states.m_playing = ScriptableObject.CreateInstance<GMGS_Playing>().Init(this) as GMGS_Playing;
-        m_states.m_playing_truckSelected = ScriptableObject.CreateInstance<GMGS_Playing_TruckSelected>().Init(this) as GMGS_Playing_TruckSelected;
-        m_states.m_playing_waiting = ScriptableObject.CreateInstance<GMGS_Playing_Waiting>().Init(this) as GMGS_Playing_Waiting;
-
+       
         m_states.m_pause = ScriptableObject.CreateInstance<GMGS_Pause>().Init(this) as GMGS_Pause;
         m_states.m_points = ScriptableObject.CreateInstance<GMGS_Points>().Init(this) as GMGS_Points;
 
@@ -73,7 +63,7 @@ public class GameManagerGameplay : MonoBehaviour
 
 
     [SerializeField]
-    GameManagerGameplayStates m_states;
+    public GameManagerGameplayStates m_states;
 
     [System.Serializable]
     public class GameManagerGameplayStates
@@ -85,8 +75,6 @@ public class GameManagerGameplay : MonoBehaviour
         public GMGS_InitGame m_initGame;
         public GMGS_Pause m_pause;
         public GMGS_Playing m_playing;
-        public GMGS_Playing_TruckSelected m_playing_truckSelected;
-        public GMGS_Playing_Waiting m_playing_waiting;
         public GMGS_Points m_points;
 
 

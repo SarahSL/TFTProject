@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GMGS_Playing_Waiting : GMGS_GameplayControllerStates
+public class GPS_Playing_TruckSelected : GPS_GamePlayingState
 {
     public override void Enter()
     {

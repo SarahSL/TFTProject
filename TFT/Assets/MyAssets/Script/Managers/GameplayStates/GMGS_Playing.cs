@@ -5,18 +5,30 @@ using UnityEngine;
 
 public class GMGS_Playing : GMGS_GameplayControllerStates
 {
+    private float gameTime;
+    public GameManagerPlaying gamePlayingState;
     public override void Enter()
     {
-        throw new NotImplementedException();
+        //INICIARLIZAR TODO
+        gameTime = 180.0f;
+        gamePlayingState = FindObjectOfType<GameManagerPlaying>();
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+        if( gameTime > 0)
+        {
+            gameTime -= Time.deltaTime;
+        }
+        else
+        {
+            gamePlayingState.GPS_GoToInactive();
+            m_target.SMG_GoToPoints();
+        }
     }
 }

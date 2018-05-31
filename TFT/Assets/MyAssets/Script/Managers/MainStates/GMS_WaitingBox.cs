@@ -13,6 +13,7 @@ public class GMS_WaitingBox : GMS_ControllerState
         principalARController.boxObject.SetActive(true);
 
         m_director = principalARController.boxObject.GetComponent<PlayableDirector>();
+        
         m_director.initialTime = 0;
         m_director.Play();
     }
