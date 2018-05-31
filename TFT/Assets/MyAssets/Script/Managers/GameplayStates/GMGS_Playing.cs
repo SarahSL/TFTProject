@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GMGS_Playing : GMGS_GameplayControllerStates
 {
-    public PrincipalARController principalARController;
    
 
     private float gameTime;
@@ -13,14 +12,14 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
     public override void Enter()
     {
         //INICIARLIZAR TODO
-        principalARController = FindObjectOfType<PrincipalARController>();
         gameTime = 20.0f;
         gamePlayingState = FindObjectOfType<GameManagerPlaying>();
+        gamePlayingState.GPS_GoToPlaying_Waiting();
     }
 
     public override void Exit()
     {
-        principalARController.boardObject.SetActive(false);
+        m_target.principalARController.boardObject.SetActive(false);
     }
 
     public override void Update()

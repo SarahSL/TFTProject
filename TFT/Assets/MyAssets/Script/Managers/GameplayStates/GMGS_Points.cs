@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class GMGS_Points : GMGS_GameplayControllerStates
 {
-    public PrincipalARController principalARController;
     public InputManager inputManager;
     public GameManagerMain gameManagerMain;
     public override void Enter()
     {
         //SHOW THE POINTS
-        principalARController = FindObjectOfType<PrincipalARController>();
         inputManager = FindObjectOfType<InputManager>();
         inputManager.TouchAction += MenuState;
         gameManagerMain = FindObjectOfType<GameManagerMain>();

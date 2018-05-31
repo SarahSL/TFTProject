@@ -16,4 +16,5 @@ public abstract class GenericState<T> : ScriptableObject
         return this;
     }
     protected T m_target;
+    
 }

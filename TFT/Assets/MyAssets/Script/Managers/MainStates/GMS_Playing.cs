@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class GMS_Playing : GMS_ControllerState
 {
-    public PrincipalARController principalARController;
     public GameManagerGameplay gameMangaerGameplay;
     public override void Enter()
     {
         gameMangaerGameplay = FindObjectOfType<GameManagerGameplay>();
-        principalARController = FindObjectOfType<PrincipalARController>();
        
     }
 

@@ -6,7 +6,6 @@ using UnityEngine.Playables;
 
 public class GMGS_InitGame : GMGS_GameplayControllerStates
 {
-    public PrincipalARController principalARController;
     private bool playing = false;
     public PlayableDirector m_director;
 
@@ -14,13 +13,10 @@ public class GMGS_InitGame : GMGS_GameplayControllerStates
 
     public override void Enter()
     {
-        principalARController = FindObjectOfType<PrincipalARController>();
-
-        countDownCanvas = principalARController.boardObject.GetComponentInChildren<Canvas>().gameObject;
+        m_target.principalARController.boardObject.SetActive(true);
+        countDownCanvas = m_target.principalARController.boardObject.GetComponentInChildren<Canvas>().gameObject;
         countDownCanvas.SetActive(false);
-        principalARController.boardObject.SetActive(true);
-        principalARController.boardObject.SetActive(true);
-        m_director = principalARController.boardObject.GetComponent<PlayableDirector>();
+        m_director = m_target.principalARController.boardObject.GetComponent<PlayableDirector>();
         m_director.initialTime = 0;
         m_director.Play();
 

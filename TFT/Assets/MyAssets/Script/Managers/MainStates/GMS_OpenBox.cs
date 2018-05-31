@@ -6,10 +6,8 @@ using UnityEngine;
 public class GMS_OpenBox : GMS_ControllerState
 {
     private GMS_Menu menu;
-    public PrincipalARController principalARController;
     public override void Enter()
     {
-        principalARController = FindObjectOfType<PrincipalARController>();
         menu = FindObjectOfType<GMS_Menu>();
 
         if (menu.raycastTag == "Video")
@@ -24,7 +22,7 @@ public class GMS_OpenBox : GMS_ControllerState
 
     public override void Exit()
     {
-        principalARController.boxObject.SetActive(false);
+        m_target.principalARController.boxObject.SetActive(false);
     }
 
     public override void Update()

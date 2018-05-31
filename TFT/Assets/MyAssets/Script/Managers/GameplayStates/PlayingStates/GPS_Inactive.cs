@@ -7,16 +7,16 @@ public class GPS_Inactive : GPS_GamePlayingState
 {
     public override void Enter()
     {
-       // throw new NotImplementedException();
+       
     }
 
     public override void Exit()
     {
-        //throw new NotImplementedException();
+        
     }
 
     public override void Update()
     {
-       // throw new NotImplementedException();
+      
     }
 }

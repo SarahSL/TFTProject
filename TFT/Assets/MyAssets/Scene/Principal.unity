@@ -779,16 +779,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: principalARController
+      value: 
+      objectReference: {fileID: 2127609428}
+    - target: {fileID: 114027136100338348, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: principalARController
+      value: 
+      objectReference: {fileID: 2127609428}
+    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: principalARController
+      value: 
+      objectReference: {fileID: 2127609428}
     - target: {fileID: 114800451089080514, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
       propertyPath: firstPersonCamera
       value: 
       objectReference: {fileID: 1265635998}
-    - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
-        type: 2}
-      propertyPath: arTag
-      value: 
-      objectReference: {fileID: 2127609426}
     - target: {fileID: 114234665394340054, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
       propertyPath: principalArCore
@@ -799,36 +809,9 @@ Prefab:
       propertyPath: testyController
       value: 
       objectReference: {fileID: 293846660}
-    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
-        type: 2}
-      propertyPath: arTagGameplay
-      value: 
-      objectReference: {fileID: 2127609426}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 280a1307689719646bb79be562c2304a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &703891912 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1415948567441456, guid: 280a1307689719646bb79be562c2304a,
-    type: 2}
-  m_PrefabInternal: {fileID: 703891911}
---- !u!114 &703891913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 703891912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5ba0cd8bd519c4d8c502e09497a7ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arTagGameplay: {fileID: 2127609426}
-  m_states:
-    m_current: {fileID: 0}
-    m_playing_truckSelected: {fileID: 0}
-    m_playing_waiting: {fileID: 0}
-    m_inactive: {fileID: 0}
 --- !u!1001 &743496105
 Prefab:
   m_ObjectHideFlags: 0

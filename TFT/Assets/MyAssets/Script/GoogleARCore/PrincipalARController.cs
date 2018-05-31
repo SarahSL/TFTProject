@@ -100,7 +100,7 @@ public class PrincipalARController : MonoBehaviour
 
                     boxObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
 
-                    videoObject.transform.LookAt(cameraPositionSameY, videoObject.transform.up);
+                    videoObject.transform.LookAt(cameraPositionSameY, boxObject.transform.up);
 
                     boardObject.transform.LookAt(cameraPositionSameY, boardObject.transform.up);
                 }

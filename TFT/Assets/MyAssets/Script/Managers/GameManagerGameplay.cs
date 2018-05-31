@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManagerGameplay : MonoBehaviour
 {
-    public GameObject arTagGameplay;
+    public PrincipalARController principalARController;
     private void Update()
     {
         m_states.m_current.Update();

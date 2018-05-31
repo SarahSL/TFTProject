@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GMGS_CountDown : GMGS_GameplayControllerStates
 {
-    public PrincipalARController principalArCore;
     private GameObject countDownCanvas;
 
     private Text countDownText;
@@ -15,8 +14,7 @@ public class GMGS_CountDown : GMGS_GameplayControllerStates
 
     public override void Enter()
     {
-        principalArCore = FindObjectOfType<PrincipalARController>();
-        countDownCanvas = principalArCore.boardObject.GetComponentInChildren<Canvas>().gameObject;
+        countDownCanvas = m_target.principalARController.boardObject.GetComponentInChildren<Canvas>().gameObject;
         
         countDownText = countDownCanvas.GetComponentInChildren<Text>();
         countDownText.text = "3";
