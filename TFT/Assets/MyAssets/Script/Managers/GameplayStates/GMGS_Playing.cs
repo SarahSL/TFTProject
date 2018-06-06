@@ -9,9 +9,16 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
 
     private float gameTime;
     public GameManagerPlaying gamePlayingState;
+    public TruckAgent[] truckAgents;
+
     public override void Enter()
     {
         //INICIARLIZAR TODO
+        truckAgents = FindObjectsOfType<TruckAgent>();
+        foreach (TruckAgent truckagent in truckAgents)
+        {
+            truckagent.SM_GoToWaiting();
+        }
         gameTime = 20.0f;
         gamePlayingState = FindObjectOfType<GameManagerPlaying>();
         gamePlayingState.GPS_GoToPlaying_Waiting();
@@ -27,7 +34,7 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         if( gameTime > 0)
         {
             gameTime -= Time.deltaTime;
-            Debug.Log(gameTime);
+            //Debug.Log(gameTime);
         }
         else
         {

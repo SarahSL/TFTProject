@@ -2,21 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TSC_OnWay : TSC_TruckControllerState
 {
+   // public Transform goal;
+   // public GameObject street;
+    private bool isPermited;
+
     public override void Enter()
     {
-        throw new NotImplementedException();
+        Debug.Log("ON WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY----------");
+        //goal = GameObject.FindGameObjectWithTag("Goal").transform;
+        isPermited = true;
     }
 
     public override void Exit()
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void Update()
     {
-        throw new NotImplementedException();
+        if (isPermited)
+        {
+            Debug.Log("ON WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY----------");
+            m_target.agent.destination = m_target.warehousePosition.position;
+            isPermited = false;
+        }
+       else
+        {
+            m_target.SM_GoToWaiting();
+        }
+       
     }
 }

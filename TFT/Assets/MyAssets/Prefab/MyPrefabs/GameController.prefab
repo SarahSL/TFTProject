@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   principalARController: {fileID: 0}
+  truckSelected: {fileID: 0}
   m_states:
     m_current: {fileID: 0}
     m_playing_truckSelected: {fileID: 0}

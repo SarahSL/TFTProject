@@ -8,6 +8,8 @@ TagManager:
   - Plane
   - Video
   - Game
+  - Truck
+  - Warehouse
   layers:
   - Default
   - TransparentFX

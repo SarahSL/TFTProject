@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManagerPlaying : MonoBehaviour {
 
     public PrincipalARController principalARController;
+    public GameObject truckSelected;
     private void Update()
     {
         m_states.m_current.Update();
