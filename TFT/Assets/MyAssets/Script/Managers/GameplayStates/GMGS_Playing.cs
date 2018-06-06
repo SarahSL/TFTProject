@@ -26,6 +26,11 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
 
     public override void Exit()
     {
+        truckAgents = FindObjectsOfType<TruckAgent>();
+        foreach (TruckAgent truckagent in truckAgents)
+        {
+            truckagent.SM_GoToInactive();
+        }
         m_target.principalARController.boardObject.SetActive(false);
     }
 

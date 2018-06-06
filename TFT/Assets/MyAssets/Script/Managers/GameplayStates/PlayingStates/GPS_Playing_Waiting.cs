@@ -39,7 +39,9 @@ public class GPS_Playing_Waiting : GPS_GamePlayingState
             raycastTag = h.collider.tag;
             if (raycastTag == "Truck")
             {
-                 m_target.truckSelected = h.collider.gameObject;
+                m_target.truckSelected = h.collider.gameObject;
+
+                Debug.Log("ON WAITIIIIIIIIIIIINGGGGGGGGGGGGGGGGGGGGG----------HAS PULSADO UN TRUCK" + m_target.truckSelected);
 
                 truckAgent = m_target.truckSelected.GetComponent<TruckAgent>();
                 truckAgent.agent = h.collider.gameObject.GetComponent<NavMeshAgent>();

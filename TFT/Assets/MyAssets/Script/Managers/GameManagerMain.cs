@@ -62,7 +62,7 @@ public class GameManagerMain : MonoBehaviour
 
         m_states.m_current = m_states.m_inactive;
         SM_GoToScanningRoom();
-       // SM_GoToMenu();
+        //SM_GoToMenu();
     }
 
     [SerializeField]

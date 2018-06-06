@@ -9,6 +9,10 @@ public class TruckAgent : MonoBehaviour
     public PrincipalARController principalARController;
     public NavMeshAgent agent;
     public Transform warehousePosition;
+    private void Update()
+    {
+        m_states.m_current.Update();
+    }
     #region state management
     private void SM_GoToState(TSC_TruckControllerState newState)
     {

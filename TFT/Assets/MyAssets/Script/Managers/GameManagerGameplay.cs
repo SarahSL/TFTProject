@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameManagerGameplay : MonoBehaviour
 {
     public PrincipalARController principalARController;
+
+    public GameObject CountDownUI;
+
     private void Update()
     {
         m_states.m_current.Update();

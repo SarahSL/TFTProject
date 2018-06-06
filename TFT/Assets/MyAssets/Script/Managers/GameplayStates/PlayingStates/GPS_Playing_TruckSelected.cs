@@ -38,7 +38,7 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
             {
                 m_target.truckSelected = h.collider.gameObject;
             }
-            else if (raycastTag == "Warehouse")
+            else if (raycastTag == "Goal")
             {
                 truckAgent.warehousePosition = h.collider.transform;
                 truckAgent.SM_GoToOnWay();
