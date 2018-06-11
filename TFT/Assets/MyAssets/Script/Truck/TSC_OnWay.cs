@@ -26,8 +26,8 @@ public class TSC_OnWay : TSC_TruckControllerState
     {
         if (isPermited)
         {
-            Debug.Log("ON WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY----------");
-            m_target.agent.destination = m_target.warehousePosition.position;
+            //  m_target.agent.destination = m_target.warehousePosition.position;
+            m_target.agent.destination = GameObject.FindGameObjectWithTag("Goal").transform.position;
             isPermited = false;
         }
        else

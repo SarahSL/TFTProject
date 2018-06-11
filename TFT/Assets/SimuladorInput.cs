@@ -23,6 +23,7 @@ public class SimuladorInput : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             gmp.GPS_GoToPlaying_TruckSelected();
+
         }
     }
     public GameManagerPlaying gmp;
