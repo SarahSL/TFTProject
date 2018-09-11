@@ -61,8 +61,8 @@ public class GameManagerMain : MonoBehaviour
         m_states.m_inactive = ScriptableObject.CreateInstance<GMS_Inactive>().Init(this) as GMS_Inactive;
 
         m_states.m_current = m_states.m_inactive;
-        //SM_GoToScanningRoom();
-        SM_GoToMenu();
+        SM_GoToScanningRoom();
+        //SM_GoToMenu();
     }
 
     [SerializeField]
