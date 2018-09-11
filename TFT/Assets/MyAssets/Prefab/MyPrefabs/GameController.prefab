@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4271969225010560}
   - component: {fileID: 114239413219480124}
+  - component: {fileID: 114027136100338348}
   m_Layer: 0
   m_Name: GameManagerGameplay
   m_TagString: Untagged
@@ -52,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4658414278028754}
   - component: {fileID: 114234665394340054}
+  - component: {fileID: 114800451089080514}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -100,6 +102,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114027136100338348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415948567441456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5ba0cd8bd519c4d8c502e09497a7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  principalARController: {fileID: 0}
+  truckSelected: {fileID: 0}
+  m_states:
+    m_current: {fileID: 0}
+    m_playing_truckSelected: {fileID: 0}
+    m_playing_waiting: {fileID: 0}
+    m_inactive: {fileID: 0}
 --- !u!114 &114234665394340054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +134,7 @@ MonoBehaviour:
   principalArCore: {fileID: 0}
   testyController: {fileID: 0}
   gameManagerMain: {fileID: 1809475970747338}
+  gameManagerGameplay: {fileID: 1415948567441456}
 --- !u!114 &114239413219480124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +146,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6215fb5825740fd41a0845c41a3989bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  principalARController: {fileID: 0}
+  CountDownUI: {fileID: 0}
+  m_states:
+    m_current: {fileID: 0}
+    m_countDown: {fileID: 0}
+    m_inactive: {fileID: 0}
+    m_initGame: {fileID: 0}
+    m_pause: {fileID: 0}
+    m_playing: {fileID: 0}
+    m_points: {fileID: 0}
 --- !u!114 &114278413281404284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,9 +167,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d6743e47f7d6741ba9ef56001207fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  principalARController: {fileID: 0}
   m_states:
     m_current: {fileID: 0}
     m_menu: {fileID: 0}
     m_scanningroom: {fileID: 0}
     m_waitingbox: {fileID: 0}
     m_openbox: {fileID: 0}
+    m_playing: {fileID: 0}
+    m_video: {fileID: 0}
+    m_inactive: {fileID: 0}
+--- !u!114 &114800451089080514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966659883196452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c512c79610267574ba7f3bdff6a66e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPersonCamera: {fileID: 0}
