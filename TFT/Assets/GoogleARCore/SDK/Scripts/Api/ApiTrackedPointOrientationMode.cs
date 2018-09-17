@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="ApiTrackedPointOrientationMode.cs" company="Google">
+// <copyright file="ApiFeaturePointOrientationMode.cs" company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
 //
@@ -24,7 +24,7 @@ namespace GoogleARCoreInternal
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
     Justification = "Internal")]
-    public enum ApiTrackedPointOrientationMode
+    public enum ApiFeaturePointOrientationMode
     {
         Identity = 0,
         SurfaceNormal = 1,

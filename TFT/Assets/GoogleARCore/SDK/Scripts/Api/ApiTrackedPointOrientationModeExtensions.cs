@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="ApiTrackedPointOrientationModeExtensions.cs"
+// <copyright file="ApiFeaturePointOrientationModeExtensions.cs"
 // company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
@@ -27,20 +27,20 @@ namespace GoogleARCoreInternal
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
     Justification = "Internal")]
-    public static class ApiTrackedPointOrientationModeExtensions
+    public static class ApiFeaturePointOrientationModeExtensions
     {
-        public static TrackedPointOrientationMode ToTrackedPointOrientationMode(
-            this ApiTrackedPointOrientationMode apiMode)
+        public static FeaturePointOrientationMode ToFeaturePointOrientationMode(
+            this ApiFeaturePointOrientationMode apiMode)
         {
             switch (apiMode)
             {
-                case ApiTrackedPointOrientationMode.Identity:
-                    return TrackedPointOrientationMode.Identity;
-                case ApiTrackedPointOrientationMode.SurfaceNormal:
-                    return TrackedPointOrientationMode.SurfaceNormal;
+                case ApiFeaturePointOrientationMode.Identity:
+                    return FeaturePointOrientationMode.Identity;
+                case ApiFeaturePointOrientationMode.SurfaceNormal:
+                    return FeaturePointOrientationMode.SurfaceNormal;
                 default:
-                    ARDebug.LogError("Invalid value for ApiTrackedPointOrientationMode.");
-                    return TrackedPointOrientationMode.Identity;
+                    ARDebug.LogError("Invalid value for ApiFeaturePointOrientationMode.");
+                    return FeaturePointOrientationMode.Identity;
             }
         }
     }
