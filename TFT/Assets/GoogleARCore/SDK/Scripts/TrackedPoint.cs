@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="TrackedPoint.cs" company="Google">
+// <copyright file="FeaturePoint.cs" company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
 //
@@ -29,23 +29,19 @@ namespace GoogleARCore
     /// <summary>
     /// A point in the real world tracked by ARCore.
     /// </summary>
-    public class TrackedPoint : Trackable
+    public class FeaturePoint : Trackable
     {
-        //// @cond EXCLUDE_FROM_DOXYGEN
-
         /// <summary>
-        /// Construct TrackedPoint from a native handle.
+        /// Construct FeaturePoint from a native handle.
         /// </summary>
         /// <param name="nativeHandle">A handle to the native ARCore API Trackable.</param>
         /// <param name="nativeApi">The ARCore native api.</param>
-        public TrackedPoint(IntPtr nativeHandle, NativeSession nativeApi) : base(nativeHandle, nativeApi)
+        internal FeaturePoint(IntPtr nativeHandle, NativeSession nativeApi) : base(nativeHandle, nativeApi)
         {
         }
 
-        //// @endcond
-
         /// <summary>
-        /// Gets the pose of the TrackedPoint.
+        /// Gets the pose of the FeaturePoint.
         /// </summary>
         public Pose Pose
         {
@@ -62,16 +58,16 @@ namespace GoogleARCore
         }
 
         /// <summary>
-        /// Gets the orientation mode of the TrackedPoint.
+        /// Gets the orientation mode of the FeaturePoint.
         /// </summary>
-        public TrackedPointOrientationMode OrientationMode
+        public FeaturePointOrientationMode OrientationMode
         {
             get
             {
                 if (_IsSessionDestroyed())
                 {
                     Debug.LogError("OrientationMode:: Trying to access a session that has already been destroyed.");
-                    return TrackedPointOrientationMode.Identity;
+                    return FeaturePointOrientationMode.Identity;
                 }
 
                 return m_NativeSession.PointApi.GetOrientationMode(m_TrackableNativeHandle);

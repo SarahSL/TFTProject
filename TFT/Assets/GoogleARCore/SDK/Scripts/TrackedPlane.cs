@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="TrackedPlane.cs" company="Google">
+// <copyright file="DetectedPlane.cs" company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
 //
@@ -29,29 +29,25 @@ namespace GoogleARCore
     /// <summary>
     /// A planar surface in the real world detected and tracked by ARCore.
     /// </summary>
-    public class TrackedPlane : Trackable
+    public class DetectedPlane : Trackable
     {
-        //// @cond EXCLUDE_FROM_DOXYGEN
-
         /// <summary>
-        /// Construct TrackedPlane from a native handle.
+        /// Construct DetectedPlane from a native handle.
         /// </summary>
         /// <param name="nativeHandle">A handle to the native ARCore API Trackable.</param>
         /// <param name="nativeApi">The ARCore native api.</param>
-        public TrackedPlane(IntPtr nativeHandle, NativeSession nativeApi)
+        internal DetectedPlane(IntPtr nativeHandle, NativeSession nativeApi)
             : base(nativeHandle, nativeApi)
         {
             m_TrackableNativeHandle = nativeHandle;
             m_NativeSession = nativeApi;
         }
 
-        //// @endcond
-
         /// <summary>
-        /// Gets a reference to the plane subsuming this plane, if any.  If not null, only the subsuming plane should be
+        /// Gets a reference to the plane subsuming this plane, if any. If not null, only the subsuming plane should be
         /// considered valid for rendering.
         /// </summary>
-        public TrackedPlane SubsumedBy
+        public DetectedPlane SubsumedBy
         {
             get
             {
@@ -66,7 +62,7 @@ namespace GoogleARCore
         }
 
         /// <summary>
-        /// Gets the position and orientation of the plane's center.
+        /// Gets the position and orientation of the plane's center in Unity world space.
         /// </summary>
         public Pose CenterPose
         {
@@ -113,6 +109,23 @@ namespace GoogleARCore
                 }
 
                 return m_NativeSession.PlaneApi.GetExtentZ(m_TrackableNativeHandle);
+            }
+        }
+
+        /// <summary>
+        /// Gets the type of the plane.
+        /// </summary>
+        public DetectedPlaneType PlaneType
+        {
+            get
+            {
+                if (_IsSessionDestroyed())
+                {
+                    Debug.LogError("PlaneType:: Trying to access a session that has already been destroyed.");
+                    return DetectedPlaneType.HorizontalUpwardFacing;
+                }
+
+                return m_NativeSession.PlaneApi.GetPlaneType(m_TrackableNativeHandle);
             }
         }
 

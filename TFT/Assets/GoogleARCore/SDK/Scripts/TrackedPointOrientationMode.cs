@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="TrackedPointOrientationMode.cs" company="Google">
+// <copyright file="FeaturePointOrientationMode.cs" company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
 //
@@ -21,9 +21,9 @@
 namespace GoogleARCore
 {
     /// <summary>
-    /// The orientation mode for a TrackedPoint.
+    /// The orientation mode for a FeaturePoint.
     /// </summary>
-    public enum TrackedPointOrientationMode
+    public enum FeaturePointOrientationMode
     {
         Identity = 0,
         SurfaceNormal = 1,

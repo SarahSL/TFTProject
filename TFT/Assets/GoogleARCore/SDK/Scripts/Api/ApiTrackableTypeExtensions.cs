@@ -28,7 +28,7 @@ namespace GoogleARCoreInternal
     Justification = "Internal")]
     public static class ApiTrackableTypeExtensions
     {
-        public static ApiTrackableType GetApiTrackableType(this Type type)
+       /* public static ApiTrackableType GetApiTrackableType(this Type type)
         {
             if (type == typeof(TrackedPlane))
             {
@@ -42,6 +42,6 @@ namespace GoogleARCoreInternal
             {
                 return ApiTrackableType.Invalid;
             }
-        }
+        }*/
     }
 }

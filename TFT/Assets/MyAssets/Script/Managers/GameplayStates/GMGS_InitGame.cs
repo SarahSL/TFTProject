@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 
 public class GMGS_InitGame : GMGS_GameplayControllerStates
 {
-    private bool playing = false;
+    //private bool playing = false;
     public PlayableDirector m_director;
 
     //private GameObject countDownCanvas;
