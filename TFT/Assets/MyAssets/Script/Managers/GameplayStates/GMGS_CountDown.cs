@@ -38,22 +38,6 @@ public class GMGS_CountDown : GMGS_GameplayControllerStates
 
     public override void Update()
     {
-
-        /* if (timeLeft < 0)
-         {
-             countDownText.text = "0";
-             m_target.SMG_GoToPlaying();
-         }
-         else if (timeLeft < 1)
-         {
-             countDownText.text = "1";
-         }
-         else if (timeLeft < 2)
-         {
-             countDownText.text = "2";
-         }
-         timeLeft -= Time.deltaTime;
-         */
          if (timeLeft < 0)
         {
             countDownText.text = "0";

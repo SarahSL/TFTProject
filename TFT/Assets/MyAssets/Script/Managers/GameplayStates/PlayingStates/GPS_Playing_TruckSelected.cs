@@ -27,7 +27,7 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
 
     public override void Update()
     {
-        truckAgent.SM_GoToOnWay();
+       // truckAgent.SM_GoToOnWay();
     }
     private void SelectWarehouse(Vector2 hit)
     {
