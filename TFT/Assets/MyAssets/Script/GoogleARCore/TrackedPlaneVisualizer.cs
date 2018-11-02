@@ -50,7 +50,7 @@ namespace GoogleARCore.PrincipalAR
             new Color(1.0f, 0.756f, 0.027f)
         };
 
-        private TrackedPlane m_TrackedPlane;
+        private DetectedPlane m_TrackedPlane;
 
         // Keep previous frame's mesh polygon to avoid mesh update every frame.
         private List<Vector3> m_PreviousFrameMeshVertices = new List<Vector3>();
@@ -103,7 +103,7 @@ namespace GoogleARCore.PrincipalAR
         /// Initializes the TrackedPlaneVisualizer with a TrackedPlane.
         /// </summary>
         /// <param name="plane">The plane to vizualize.</param>
-        public void Initialize(TrackedPlane plane)
+        public void Initialize(DetectedPlane plane)
         {
             m_TrackedPlane = plane;
             m_MeshRenderer.material.SetColor("_GridColor", k_PlaneColors[s_PlaneCount++ % k_PlaneColors.Length]);

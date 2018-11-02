@@ -6,9 +6,9 @@ using GoogleARCore.PrincipalAR;
 public class GMS_ScanningRoom : GMS_ControllerState
 {
     public GameObject principalARControllerObject;
-    private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
-    private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
-    private bool m_IsQuitting = false;
+    //private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
+   // private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
+    //private bool m_IsQuitting = false;
     private bool placed = false;
     
     public override void Enter()

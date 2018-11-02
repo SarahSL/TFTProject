@@ -12,8 +12,8 @@ public class Testy : MonoBehaviour
     public GameObject TrackedPlanePrefab;
     public GameObject[] TestyCanvas;
     public GameObject test;
-    private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
-    private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
+    private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
+    //private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
     private bool m_IsQuitting = false;
     private bool placed = false;
     private void Update()
@@ -42,7 +42,7 @@ public class Testy : MonoBehaviour
             }
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-            Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
+            Session.GetTrackables<DetectedPlane>(m_NewPlanes, TrackableQueryFilter.New);
             for (int i = 0; i < m_NewPlanes.Count; i++)
             {
                 GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,

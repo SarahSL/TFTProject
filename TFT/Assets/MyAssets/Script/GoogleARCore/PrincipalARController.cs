@@ -9,12 +9,12 @@ using GoogleARCore.PrincipalAR;
 public class PrincipalARController : MonoBehaviour
 {
     
-    private List<TrackedPlane> m_NewPlanes = new List<TrackedPlane>();
-    private List<TrackedPlane> m_AllPlanes = new List<TrackedPlane>();
+    private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
+    private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
     private bool m_IsQuitting = false;
     [HideInInspector]
     public bool placed = false;
-
+    
     public GameObject boxObject;
     public GameObject videoObject;
     public GameObject boardObject;
@@ -41,7 +41,7 @@ public class PrincipalARController : MonoBehaviour
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-            Session.GetTrackables<TrackedPlane>(m_NewPlanes, TrackableQueryFilter.New);
+            Session.GetTrackables<DetectedPlane>(m_NewPlanes, TrackableQueryFilter.New);
             for (int i = 0; i < m_NewPlanes.Count; i++)
             {
                 GameObject planeObject = Instantiate(m_references.TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
@@ -49,7 +49,7 @@ public class PrincipalARController : MonoBehaviour
                 planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
             }
             bool showSearchingUI = true;
-            Session.GetTrackables<TrackedPlane>(m_AllPlanes);
+            Session.GetTrackables<DetectedPlane>(m_AllPlanes);
             for (int i = 0; i < m_AllPlanes.Count; i++)
             {
                 if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
