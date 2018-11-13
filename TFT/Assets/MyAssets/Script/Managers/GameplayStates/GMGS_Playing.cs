@@ -10,10 +10,17 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
     private float gameTime;
     public GameManagerPlaying gamePlayingState;
     public TruckAgent[] truckAgents;
+    public WarehouseAgent[] warehouseAgents;
 
     public override void Enter()
     {
         //INICIARLIZAR TODO
+        warehouseAgents = FindObjectsOfType<WarehouseAgent>();
+        foreach (WarehouseAgent warehouseAgent in warehouseAgents)
+        {
+            warehouseAgent.SM_GoToWaiting();
+        }
+
         truckAgents = FindObjectsOfType<TruckAgent>();
         foreach (TruckAgent truckagent in truckAgents)
         {
@@ -30,6 +37,11 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         foreach (TruckAgent truckagent in truckAgents)
         {
             truckagent.SM_GoToInactive();
+        }
+        warehouseAgents = FindObjectsOfType<WarehouseAgent>();
+        foreach (WarehouseAgent warehouseAgent in warehouseAgents)
+        {
+            warehouseAgent.SM_GoToInactive();
         }
         m_target.principalARController.boardObject.SetActive(false);
     }

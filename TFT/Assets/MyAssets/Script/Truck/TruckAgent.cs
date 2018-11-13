@@ -9,6 +9,10 @@ public class TruckAgent : MonoBehaviour
     public PrincipalARController principalARController;
     public NavMeshAgent agent;
     public Transform warehousePosition;
+
+    public float load;
+    public String typeLoad;
+
     private void Update()
     {
         m_states.m_current.Update();
@@ -53,6 +57,9 @@ public class TruckAgent : MonoBehaviour
         m_states.m_onway = ScriptableObject.CreateInstance<TSC_OnWay>().Init(this) as TSC_OnWay;
         m_states.m_inactive = ScriptableObject.CreateInstance<TSC_Inactive>().Init(this) as TSC_Inactive;
         m_states.m_current = m_states.m_waiting;
+
+        
+
         SM_GoToWaiting();
     }
 
