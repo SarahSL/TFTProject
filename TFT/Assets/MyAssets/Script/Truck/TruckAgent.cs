@@ -8,10 +8,11 @@ public class TruckAgent : MonoBehaviour
 {
     public PrincipalARController principalARController;
     public NavMeshAgent agent;
-    public Transform warehousePosition;
+    public WarehouseAgent warehouseSelected;
+    public GameManagerPlaying gameManagerPlaying;
 
-    public float load;
-    public String typeLoad;
+    public int load;
+    public int typeLoad;
 
     private void Update()
     {
@@ -51,15 +52,22 @@ public class TruckAgent : MonoBehaviour
 
     private void Awake()
     {
+        
+        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
+        int aux = gameManagerPlaying.warehousesActualCapacity / 2;
+        load =UnityEngine.Random.Range(1, aux);
+
+        //MEJORAR
+        typeLoad = UnityEngine.Random.Range(1, 3);
+
+
         m_states.m_waiting = ScriptableObject.CreateInstance<TSC_Waiting>().Init(this) as TSC_Waiting;
         m_states.m_angry = ScriptableObject.CreateInstance<TSC_Angry>().Init(this) as TSC_Angry;
         m_states.m_selected = ScriptableObject.CreateInstance<TSC_Selected>().Init(this) as TSC_Selected;
         m_states.m_onway = ScriptableObject.CreateInstance<TSC_OnWay>().Init(this) as TSC_OnWay;
         m_states.m_inactive = ScriptableObject.CreateInstance<TSC_Inactive>().Init(this) as TSC_Inactive;
         m_states.m_current = m_states.m_waiting;
-
         
-
         SM_GoToWaiting();
     }
 

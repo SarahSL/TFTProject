@@ -6,7 +6,13 @@ using UnityEngine;
 public class WarehouseAgent : MonoBehaviour {
 
     public PrincipalARController principalARController;
+    
+    public int[] typesLoad;
+    public int capacity;
 
+    public int actualCapacity;
+
+   
     private void Update()
     {
         m_states.m_current.Update();
@@ -36,14 +42,24 @@ public class WarehouseAgent : MonoBehaviour {
 
     private void Awake()
     {
+        //MEJORAR 
+        typesLoad = new int[3];
+        for(int aux =1; aux < 4; aux++)
+        {
+            typesLoad[aux-1] = aux;
+        }
+        capacity = 100;
+
+        //MEJORAR
+        actualCapacity = 100;
+
+
         m_states.m_waiting = ScriptableObject.CreateInstance<WSC_Waiting>().Init(this) as WSC_Waiting;
         m_states.m_selected = ScriptableObject.CreateInstance<WSC_Selected>().Init(this) as WSC_Selected;
         m_states.m_inactive = ScriptableObject.CreateInstance<WSC_Inactive>().Init(this) as WSC_Inactive;
         m_states.m_current = m_states.m_waiting;
-
-
-
         SM_GoToWaiting();
+        
     }
 
     [SerializeField]
@@ -60,4 +76,10 @@ public class WarehouseAgent : MonoBehaviour {
         
         public WSC_Inactive m_inactive;
     }
+
+
+
+
+    
+
 }

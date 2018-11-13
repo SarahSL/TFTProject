@@ -10,13 +10,24 @@ public class GPS_Playing_Waiting : GPS_GamePlayingState
     string raycastTag;
     public TruckAgent truckAgent;
 
+
+    public WarehouseAgent[] warehouseAgents;
+
     public override void Enter()
     {
         inputManager = FindObjectOfType<InputManager>();
         raycastTag = "";
+        
+
         inputManager.TouchAction += SelectTruck;
 
-
+        /* warehouseAgents = FindObjectsOfType<WarehouseAgent>();
+         foreach (WarehouseAgent warehouseAgent in warehouseAgents)
+         {
+            m_target.warehousesTotalCapacity += warehouseAgent.capacity;
+            m_target.warehousesActualCapacity += warehouseAgent.actualCapacity;
+         }
+         */
     }
 
     public override void Exit()

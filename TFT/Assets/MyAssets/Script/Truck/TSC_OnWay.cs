@@ -6,29 +6,44 @@ using UnityEngine.AI;
 
 public class TSC_OnWay : TSC_TruckControllerState
 {
-   // public Transform goal;
-   // public GameObject street;
-    private bool isPermited;
+    private bool isPermited = false;
+    private float capacity;
+    private int[] typesLoadWarehouse;
 
     public override void Enter()
     {
         Debug.Log("ON WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY----------");
-        //goal = GameObject.FindGameObjectWithTag("Goal").transform;
-        isPermited = true;
+        capacity = m_target.warehouseSelected.actualCapacity + m_target.load;
+
+        Debug.Log("CAPACITY = = "+capacity+"LOAD TARGET"+m_target.load + "TOTAL CAPACHITY"+ m_target.warehouseSelected.capacity);
+        typesLoadWarehouse = m_target.warehouseSelected.typesLoad;
+        if(capacity <= m_target.warehouseSelected.capacity)
+        {
+            for (int aux = 0; aux < typesLoadWarehouse.Length; aux++)
+            {
+                if (m_target.typeLoad == typesLoadWarehouse[aux])
+                {
+                    isPermited = true;
+                }
+            }
+        }
+            
+            
     }
 
     public override void Exit()
     {
-        
+        isPermited = false;
     }
 
     public override void Update()
     {
         if (isPermited)
         {
-            //  m_target.agent.destination = m_target.warehousePosition.position;
-            m_target.agent.destination = GameObject.FindGameObjectWithTag("Goal").transform.position;
-            isPermited = false;
+            
+            m_target.agent.destination = m_target.warehouseSelected.transform.position;
+         //   m_target.warehouseSelected.SM_GoToSelected();
+            
         }
        else
         {

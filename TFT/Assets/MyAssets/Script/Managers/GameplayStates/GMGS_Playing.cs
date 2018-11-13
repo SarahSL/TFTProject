@@ -12,6 +12,7 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
     public TruckAgent[] truckAgents;
     public WarehouseAgent[] warehouseAgents;
 
+
     public override void Enter()
     {
         //INICIARLIZAR TODO
@@ -51,6 +52,7 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         if( gameTime > 0)
         {
             gameTime -= Time.deltaTime;
+            //CONTROLAR EL WA
             //Debug.Log(gameTime);
         }
         else
