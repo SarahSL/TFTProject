@@ -25,6 +25,8 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         truckAgents = FindObjectsOfType<TruckAgent>();
         foreach (TruckAgent truckagent in truckAgents)
         {
+            truckagent.gameObject.transform.position = GameObject.FindGameObjectWithTag("PoinTruckRight").transform.position;
+
             truckagent.SM_GoToWaiting();
         }
         gameTime = 20.0f;
@@ -52,8 +54,6 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         if( gameTime > 0)
         {
             gameTime -= Time.deltaTime;
-            //CONTROLAR EL WA
-            //Debug.Log(gameTime);
         }
         else
         {

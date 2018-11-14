@@ -24,9 +24,10 @@ namespace GoogleARCoreInternal
     using System.IO;
     using UnityEditor;
     using UnityEditor.Build;
+    using UnityEditor.Build.Reporting;
     using UnityEngine;
 
-    internal class RequiredOptionalPreprocessBuild : IPreprocessBuild
+    internal class RequiredOptionalPreprocessBuild : IPreprocessBuildWithReport
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -49,6 +50,11 @@ namespace GoogleARCoreInternal
                 .SetCompatibleWithPlatform(BuildTarget.Android, isARCoreRequired);
             AssetHelper.GetPluginImporterByName("google_ar_optional.aar")
                 .SetCompatibleWithPlatform(BuildTarget.Android, !isARCoreRequired);
+        }
+
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

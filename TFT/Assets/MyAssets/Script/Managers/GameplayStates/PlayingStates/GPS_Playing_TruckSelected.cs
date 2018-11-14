@@ -12,7 +12,6 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
     public WarehouseAgent warehouseAgent;
     public override void Enter()
     {
-        Debug.Log("ON PLAYING TRUCK SELECTED----------");
         inputManager = FindObjectOfType<InputManager>();
         raycastTag = "";
         inputManager.TouchAction += SelectWarehouse;
@@ -37,13 +36,11 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
             raycastTag = h.collider.tag;
             if (raycastTag == "Truck")
             {
-                Debug.Log("OTRO CAMION SELECCIONADO------------------");
                 m_target.truckSelected = h.collider.gameObject;
                 truckAgent.SM_GoToSelected();
             }
             else if (raycastTag == "Warehouse")
             {
-                Debug.Log("CASTEANDOO WAREHOUSE--------------------");
                 truckAgent.warehouseSelected = h.collider.gameObject.GetComponent<WarehouseAgent>();
                 //WAREHOUSE == SELECTED
                 truckAgent.SM_GoToOnWay();

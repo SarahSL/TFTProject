@@ -49,9 +49,7 @@ public class WarehouseAgent : MonoBehaviour {
             typesLoad[aux-1] = aux;
         }
         capacity = 100;
-
-        //MEJORAR
-        actualCapacity = 100;
+        actualCapacity = 0;
 
 
         m_states.m_waiting = ScriptableObject.CreateInstance<WSC_Waiting>().Init(this) as WSC_Waiting;

@@ -26,9 +26,11 @@ namespace GoogleARCoreInternal
     using System.Xml;
     using UnityEditor;
     using UnityEditor.Build;
+
+    using UnityEditor.Build.Reporting;
     using UnityEngine;
 
-    internal class CloudAnchorPreprocessBuild : IPreprocessBuild
+    internal class CloudAnchorPreprocessBuild : IPreprocessBuildWithReport
     {
         private const string k_ManifestTemplateGuid = "5e182918f0b8c4929a3d4b0af0ed6f56";
         private const string k_PluginsFolderGuid = "93be2b9777c348648a2d9151b7e233fc";
@@ -203,6 +205,11 @@ namespace GoogleARCoreInternal
             string cloudServicesApiKey = ARCoreProjectSettings.Instance.IosCloudServicesApiKey;
             File.WriteAllText(Path.Combine(runtimeSettingsPath, "CloudServicesApiKey.txt"), cloudServicesApiKey);
             AssetDatabase.Refresh();
+        }
+
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

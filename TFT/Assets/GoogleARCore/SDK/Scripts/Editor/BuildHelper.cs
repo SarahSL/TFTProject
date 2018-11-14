@@ -23,11 +23,13 @@ namespace GoogleARCoreInternal
     using System.Diagnostics.CodeAnalysis;
     using UnityEditor;
     using UnityEditor.Build;
+
+    using UnityEditor.Build.Reporting;
     using UnityEngine;
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
      Justification = "Internal")]
-    public class BuildHelper : IPreprocessBuild
+    public class BuildHelper : IPreprocessBuildWithReport
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -67,6 +69,11 @@ namespace GoogleARCoreInternal
 
             arRequiredAAR.SetCompatibleWithPlatform(BuildTarget.Android, isARCoreRequired);
             arOptionalAAR.SetCompatibleWithPlatform(BuildTarget.Android, !isARCoreRequired);
+        }
+
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

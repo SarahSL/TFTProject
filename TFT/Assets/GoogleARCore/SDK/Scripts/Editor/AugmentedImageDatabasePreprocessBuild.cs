@@ -25,9 +25,11 @@ namespace GoogleARCoreInternal
     using UnityEditor;
     using UnityEditor.Build;
 
+    using UnityEditor.Build.Reporting;
+
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
      Justification = "Internal")]
-    public class AugmentedImageDatabasePreprocessBuild : IPreprocessBuild
+    public class AugmentedImageDatabasePreprocessBuild : IPreprocessBuildWithReport
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -54,6 +56,11 @@ namespace GoogleARCoreInternal
                     throw new BuildFailedException(error);
                 }
             }
+        }
+
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

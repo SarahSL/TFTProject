@@ -55,7 +55,14 @@ public class TruckAgent : MonoBehaviour
         
         gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
         int aux = gameManagerPlaying.warehousesActualCapacity / 2;
-        load =UnityEngine.Random.Range(1, aux);
+        if(aux == 0)
+        {
+            load = UnityEngine.Random.Range(30, 60);
+        }
+        else
+        {
+            load = UnityEngine.Random.Range(1, aux);
+        }
 
         //MEJORAR
         typeLoad = UnityEngine.Random.Range(1, 3);

@@ -12,10 +12,7 @@ public class TSC_OnWay : TSC_TruckControllerState
 
     public override void Enter()
     {
-        Debug.Log("ON WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY----------");
         capacity = m_target.warehouseSelected.actualCapacity + m_target.load;
-
-        Debug.Log("CAPACITY = = "+capacity+"LOAD TARGET"+m_target.load + "TOTAL CAPACHITY"+ m_target.warehouseSelected.capacity);
         typesLoadWarehouse = m_target.warehouseSelected.typesLoad;
         if(capacity <= m_target.warehouseSelected.capacity)
         {

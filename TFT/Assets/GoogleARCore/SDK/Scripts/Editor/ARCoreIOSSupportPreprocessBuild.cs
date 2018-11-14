@@ -26,9 +26,11 @@ namespace GoogleARCoreInternal
     using System.IO;
     using UnityEditor;
     using UnityEditor.Build;
+
+    using UnityEditor.Build.Reporting;
     using UnityEngine;
 
-    internal class ARCoreIOSSupportPreprocessBuild : IPreprocessBuild
+    internal class ARCoreIOSSupportPreprocessBuild : IPreprocessBuildWithReport
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -56,6 +58,11 @@ namespace GoogleARCoreInternal
 
                 ARCoreIOSSupportHelper.SetARCoreIOSSupportEnabled(arcoreiOSEnabled);
             }
+        }
+
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
