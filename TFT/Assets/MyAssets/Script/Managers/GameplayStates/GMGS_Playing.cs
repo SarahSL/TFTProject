@@ -22,11 +22,11 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
             warehouseAgent.SM_GoToWaiting();
         }
 
+        //gamePlayingState.PoolTruck.CreateFirstTruckController();
+
         truckAgents = FindObjectsOfType<TruckAgent>();
         foreach (TruckAgent truckagent in truckAgents)
         {
-            truckagent.gameObject.transform.position = GameObject.FindGameObjectWithTag("PoinTruckRight").transform.position;
-
             truckagent.SM_GoToWaiting();
         }
         gameTime = 20.0f;

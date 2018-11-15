@@ -113,7 +113,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &31745227
+--- !u!1001 &217120431
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -151,14 +151,6 @@ Prefab:
     - target: {fileID: 4682354477306608, guid: 5836778bfa7a11f428f9bf652a041aa5, type: 2}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1336219017675972, guid: 5836778bfa7a11f428f9bf652a041aa5, type: 2}
-      propertyPath: m_TagString
-      value: PointTruckRight
-      objectReference: {fileID: 0}
-    - target: {fileID: 1607937273159348, guid: 5836778bfa7a11f428f9bf652a041aa5, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5836778bfa7a11f428f9bf652a041aa5, type: 2}
@@ -315,6 +307,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: principalARController
+      value: 
+      objectReference: {fileID: 2127609428}
+    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: CountDownUI
+      value: 
+      objectReference: {fileID: 2027931028}
+    - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
+        type: 2}
+      propertyPath: principalARController
+      value: 
+      objectReference: {fileID: 2127609428}
     - target: {fileID: 114800451089080514, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
       propertyPath: firstPersonCamera
@@ -330,21 +337,6 @@ Prefab:
       propertyPath: testyController
       value: 
       objectReference: {fileID: 293846660}
-    - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
-        type: 2}
-      propertyPath: principalARController
-      value: 
-      objectReference: {fileID: 2127609428}
-    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
-        type: 2}
-      propertyPath: principalARController
-      value: 
-      objectReference: {fileID: 2127609428}
-    - target: {fileID: 114239413219480124, guid: 280a1307689719646bb79be562c2304a,
-        type: 2}
-      propertyPath: CountDownUI
-      value: 
-      objectReference: {fileID: 2027931028}
     - target: {fileID: 114027136100338348, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
       propertyPath: principalARController
@@ -643,9 +635,9 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677970450 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1122321018799184, guid: 5836778bfa7a11f428f9bf652a041aa5,
+  m_CorrespondingSourceObject: {fileID: 1102809536413486, guid: 5836778bfa7a11f428f9bf652a041aa5,
     type: 2}
-  m_PrefabInternal: {fileID: 31745227}
+  m_PrefabInternal: {fileID: 217120431}
 --- !u!1001 &1908199012
 Prefab:
   m_ObjectHideFlags: 0

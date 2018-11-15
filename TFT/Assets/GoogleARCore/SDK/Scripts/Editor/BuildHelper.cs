@@ -29,7 +29,9 @@ namespace GoogleARCoreInternal
 
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
      Justification = "Internal")]
-    public class BuildHelper : IPreprocessBuildWithReport
+#pragma warning disable CS0618 // El tipo o el miembro están obsoletos
+    public class BuildHelper : IPreprocessBuild
+#pragma warning restore CS0618 // El tipo o el miembro están obsoletos
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -71,9 +73,6 @@ namespace GoogleARCoreInternal
             arOptionalAAR.SetCompatibleWithPlatform(BuildTarget.Android, !isARCoreRequired);
         }
 
-        public void OnPreprocessBuild(BuildReport report)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

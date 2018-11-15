@@ -30,7 +30,9 @@ namespace GoogleARCoreInternal
     using UnityEditor.Build.Reporting;
     using UnityEngine;
 
-    internal class CloudAnchorPreprocessBuild : IPreprocessBuildWithReport
+#pragma warning disable CS0618 // El tipo o el miembro están obsoletos
+    internal class CloudAnchorPreprocessBuild : IPreprocessBuild
+#pragma warning restore CS0618 // El tipo o el miembro están obsoletos
     {
         private const string k_ManifestTemplateGuid = "5e182918f0b8c4929a3d4b0af0ed6f56";
         private const string k_PluginsFolderGuid = "93be2b9777c348648a2d9151b7e233fc";
@@ -207,9 +209,6 @@ namespace GoogleARCoreInternal
             AssetDatabase.Refresh();
         }
 
-        public void OnPreprocessBuild(BuildReport report)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

@@ -30,7 +30,9 @@ namespace GoogleARCoreInternal
     using UnityEditor.Build.Reporting;
     using UnityEngine;
 
-    internal class ARCoreIOSSupportPreprocessBuild : IPreprocessBuildWithReport
+#pragma warning disable CS0618 // El tipo o el miembro están obsoletos
+    internal class ARCoreIOSSupportPreprocessBuild : IPreprocessBuild
+#pragma warning restore CS0618 // El tipo o el miembro están obsoletos
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -59,10 +61,6 @@ namespace GoogleARCoreInternal
                 ARCoreIOSSupportHelper.SetARCoreIOSSupportEnabled(arcoreiOSEnabled);
             }
         }
-
-        public void OnPreprocessBuild(BuildReport report)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }
