@@ -7,18 +7,12 @@ using UnityEngine.UI;
 
 public class GMGS_CountDown : GMGS_GameplayControllerStates
 {
-    // private GameObject countDownCanvas;
-
-    // private Text countDownText;
     private Text countDownText;
     private float timeLeft;
 
     public override void Enter()
     {
         m_target.CountDownUI.SetActive(true);
-        //countDownCanvas = m_target.principalARController.boardObject.GetComponentInChildren<Canvas>().gameObject;
-        //countDownText = countDownCanvas.GetComponentInChildren<Text>();
-        //countDownText.text = "3";
         timeLeft = 3.0f;
 
         countDownText = m_target.CountDownUI.GetComponentInChildren<Text>();
@@ -29,8 +23,6 @@ public class GMGS_CountDown : GMGS_GameplayControllerStates
 
     public override void Exit()
     {
-        //countDownText.text = "";
-        //countDownCanvas.SetActive(false);
         countDownText.text = "";
         m_target.CountDownUI.SetActive(false);
 

@@ -11,7 +11,7 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
     public GameManagerPlaying gamePlayingState;
     public TruckAgent[] truckAgents;
     public WarehouseAgent[] warehouseAgents;
-
+    public PoolTruckController poolTruck;
 
     public override void Enter()
     {
@@ -22,7 +22,11 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
             warehouseAgent.SM_GoToWaiting();
         }
 
-        //gamePlayingState.PoolTruck.CreateFirstTruckController();
+        gamePlayingState = FindObjectOfType<GameManagerPlaying>();
+        poolTruck = FindObjectOfType<PoolTruckController>();
+        poolTruck.CreateFirstTruckController();
+
+        gamePlayingState.poolTruck = poolTruck;
 
         truckAgents = FindObjectsOfType<TruckAgent>();
         foreach (TruckAgent truckagent in truckAgents)
@@ -30,7 +34,6 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
             truckagent.SM_GoToWaiting();
         }
         gameTime = 20.0f;
-        gamePlayingState = FindObjectOfType<GameManagerPlaying>();
         gamePlayingState.GPS_GoToPlaying_Waiting();
     }
 

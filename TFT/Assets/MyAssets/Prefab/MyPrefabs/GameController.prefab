@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4271969225010560}
   - component: {fileID: 114239413219480124}
   - component: {fileID: 114027136100338348}
-  - component: {fileID: 114920723457050088}
   m_Layer: 0
   m_Name: GameManagerGameplay
   m_TagString: Untagged
@@ -193,18 +192,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstPersonCamera: {fileID: 0}
---- !u!114 &114920723457050088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1415948567441456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb65a042e6d8acf49ab71176d5614f5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_instanciables:
-    TruckControllerPrefab: {fileID: 1702906986469554, guid: 0aabc7da2cdbae14a8b88b5aae4289ee,
-      type: 2}
-  trucksPositions: []

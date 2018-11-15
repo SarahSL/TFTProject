@@ -6,7 +6,7 @@ using UnityEngine;
 public class WarehouseAgent : MonoBehaviour {
 
     public PrincipalARController principalARController;
-    
+
     public int[] typesLoad;
     public int capacity;
 
@@ -42,15 +42,8 @@ public class WarehouseAgent : MonoBehaviour {
 
     private void Awake()
     {
-        //MEJORAR 
-        typesLoad = new int[3];
-        for(int aux =1; aux < 4; aux++)
-        {
-            typesLoad[aux-1] = aux;
-        }
-        capacity = 100;
-        actualCapacity = 0;
-
+        //EDITADO EN EL EDITOR. capacity y types
+        
 
         m_states.m_waiting = ScriptableObject.CreateInstance<WSC_Waiting>().Init(this) as WSC_Waiting;
         m_states.m_selected = ScriptableObject.CreateInstance<WSC_Selected>().Init(this) as WSC_Selected;

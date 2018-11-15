@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolTruckController : MonoBehaviour {
+public class PoolTruckController : MonoBehaviour
+{
     public PoolTruckControllerInstanciables m_instanciables;
     public Transform[] trucksPositions;
-	// Use this for initialization
-	void Awake () {
-        trucksPositions[0] = GameObject.FindGameObjectWithTag("PointTruckRight").transform;
-        trucksPositions[1] = GameObject.FindGameObjectWithTag("PointTruckCenter").transform;
-        trucksPositions[2] = GameObject.FindGameObjectWithTag("PointTruckLeft").transform;
-        Debug.Log("TRUCKS POSITIONS TRANSFORMS NO ESTA VACIO" + trucksPositions[0]);
+    // Use this for initialization
+    void Awake()
+    {
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
     public void CreateFirstTruckController()
     {
-        var TruckRight = Instantiate( m_instanciables.TruckControllerPrefab, trucksPositions[0].position, Quaternion.identity);
-       // TruckRight.transform.parent = gameObject.transform;
-        
+        CreateTruck(0);
+        CreateTruck(1);
+        CreateTruck(2);
+
     }
 
 
@@ -31,5 +31,12 @@ public class PoolTruckController : MonoBehaviour {
         public GameObject TruckControllerPrefab;
 
 
+    }
+    
+    private void CreateTruck(int pos)
+    {
+        var truck = Instantiate(m_instanciables.TruckControllerPrefab, trucksPositions[pos].position, Quaternion.identity);
+        truck.transform.parent = trucksPositions[pos].gameObject.transform;
+        truck.transform.localScale = new Vector3(0.6F, 0.6F, 0.6F);
     }
 }
