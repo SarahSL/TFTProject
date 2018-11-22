@@ -7,12 +7,17 @@ public class WarehouseAgent : MonoBehaviour {
 
     public PrincipalARController principalARController;
 
+
+    public TextMesh actualCapacityText;
+
     public int[] typesLoad;
     public int capacity;
 
     public int actualCapacity;
 
-   
+
+    public int loadTruck;
+
     private void Update()
     {
         m_states.m_current.Update();
@@ -43,8 +48,8 @@ public class WarehouseAgent : MonoBehaviour {
     private void Awake()
     {
         //EDITADO EN EL EDITOR. capacity y types
-        
 
+        actualCapacityText.text = actualCapacity + "/" + capacity;
         m_states.m_waiting = ScriptableObject.CreateInstance<WSC_Waiting>().Init(this) as WSC_Waiting;
         m_states.m_selected = ScriptableObject.CreateInstance<WSC_Selected>().Init(this) as WSC_Selected;
         m_states.m_inactive = ScriptableObject.CreateInstance<WSC_Inactive>().Init(this) as WSC_Inactive;
@@ -67,6 +72,7 @@ public class WarehouseAgent : MonoBehaviour {
         
         public WSC_Inactive m_inactive;
     }
+
 
 
 

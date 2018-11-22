@@ -37,6 +37,6 @@ public class PoolTruckController : MonoBehaviour
     {
         var truck = Instantiate(m_instanciables.TruckControllerPrefab, trucksPositions[pos].position, Quaternion.identity);
         truck.transform.parent = trucksPositions[pos].gameObject.transform;
-        truck.transform.localScale = new Vector3(0.6F, 0.6F, 0.6F);
+        truck.transform.localScale = new Vector3(1f, 1F, 1F);
     }
 }

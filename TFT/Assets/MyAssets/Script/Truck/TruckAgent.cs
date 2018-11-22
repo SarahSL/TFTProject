@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class TruckAgent : MonoBehaviour
 {
@@ -53,20 +54,7 @@ public class TruckAgent : MonoBehaviour
     private void Awake()
     {
         
-        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
-        int aux = gameManagerPlaying.warehousesActualCapacity / 2;
-        if(aux == 0)
-        {
-            load = UnityEngine.Random.Range(30, 60);
-        }
-        else
-        {
-            load = UnityEngine.Random.Range(1, aux);
-        }
-
-        //MEJORAR
-        typeLoad = UnityEngine.Random.Range(1, 3);
-
+        SetTruck();
 
         m_states.m_waiting = ScriptableObject.CreateInstance<TSC_Waiting>().Init(this) as TSC_Waiting;
         m_states.m_angry = ScriptableObject.CreateInstance<TSC_Angry>().Init(this) as TSC_Angry;
@@ -92,4 +80,44 @@ public class TruckAgent : MonoBehaviour
         public TSC_OnWay m_onway;
         public TSC_Inactive m_inactive;
     }
+
+
+
+    public TextMesh typeLoadText;
+    public TextMesh loadText;
+
+    private void SetTruck()
+    {
+        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
+        int aux = gameManagerPlaying.warehousesActualCapacity / 2;
+        if (aux == 0)
+        {
+            load = UnityEngine.Random.Range(30, 60);
+        }
+        else
+        {
+            load = UnityEngine.Random.Range(1, aux);
+        }
+
+        //MEJORAR
+        loadText.text = "" + load;
+        typeLoad = UnityEngine.Random.Range(1,3);
+        switch (typeLoad)
+        {
+            case 1:
+                typeLoadText.text = "Grande";
+                break;
+            case 2:
+
+                typeLoadText.text = "Pequeño";
+                break;
+            case 3:
+
+                typeLoadText.text = "Fragil";
+                break;
+        } 
+
+    }
+
+   
 }

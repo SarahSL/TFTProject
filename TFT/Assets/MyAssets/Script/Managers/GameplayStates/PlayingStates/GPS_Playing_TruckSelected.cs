@@ -42,7 +42,7 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
             else if (raycastTag == "Warehouse")
             {
                 truckAgent.warehouseSelected = h.collider.gameObject.GetComponent<WarehouseAgent>();
-                //WAREHOUSE == SELECTED
+                
                 truckAgent.SM_GoToOnWay();
                 m_target.GPS_GoToPlaying_Waiting();
             }

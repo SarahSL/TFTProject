@@ -17,7 +17,7 @@ public class GPS_Playing_Waiting : GPS_GamePlayingState
     {
         inputManager = FindObjectOfType<InputManager>();
         raycastTag = "";
-        
+
 
         inputManager.TouchAction += SelectTruck;
          warehouseAgents = FindObjectsOfType<WarehouseAgent>();
@@ -54,6 +54,7 @@ public class GPS_Playing_Waiting : GPS_GamePlayingState
                 truckAgent = m_target.truckSelected.GetComponent<TruckAgent>();
                 truckAgent.agent = h.collider.gameObject.GetComponent<NavMeshAgent>();
 
+                truckAgent.SM_GoToSelected();
                 m_target.GPS_GoToPlaying_TruckSelected();
             }
         }
