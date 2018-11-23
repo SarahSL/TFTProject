@@ -7,6 +7,7 @@ public class TSC_Inactive : TSC_TruckControllerState
 {
     public override void Enter()
     {
+        
     }
 
     public override void Exit()
@@ -15,5 +16,6 @@ public class TSC_Inactive : TSC_TruckControllerState
 
     public override void Update()
     {
+        m_target.gameObject.SetActive(false);
     }	
 }

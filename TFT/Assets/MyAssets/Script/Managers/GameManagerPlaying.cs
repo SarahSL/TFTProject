@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerPlaying : MonoBehaviour {
 
     public PrincipalARController principalARController;
     public GameObject truckSelected;
     public PoolTruckController poolTruck;
+
+    public GameObject wareLinkText;
 
     public int warehousesActualCapacity;
     public int warehousesTotalCapacity;
@@ -57,6 +60,12 @@ public class GameManagerPlaying : MonoBehaviour {
         public GPS_Inactive m_inactive;
 
 
+    }
+
+
+    public void NewTruck(int oldPosition)
+    {
+      //  poolTruck.NewTruck(oldPosition);
     }
 }
 

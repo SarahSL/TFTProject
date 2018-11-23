@@ -14,6 +14,7 @@ public class TruckAgent : MonoBehaviour
 
     public int load;
     public int typeLoad;
+    public int idTruck;
 
     private void Update()
     {

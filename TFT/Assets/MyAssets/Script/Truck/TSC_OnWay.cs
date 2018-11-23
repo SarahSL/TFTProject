@@ -31,12 +31,6 @@ public class TSC_OnWay : TSC_TruckControllerState
 
     public override void Exit()
     {
-        //DEBERIA SER  UN DESTROY, nO SET ACTIVE
-
-        if (isPermited)
-        {
-           // m_target.gameObject.SetActive(false);
-        }
         isPermited = false;
     }
 
@@ -44,10 +38,12 @@ public class TSC_OnWay : TSC_TruckControllerState
     {
         if (isPermited)
         {
-            
             m_target.agent.destination = m_target.warehouseSelected.transform.position;
+            
+           // m_target.gameManagerPlaying.NewTruck(m_target.idTruck);
+
             m_target.warehouseSelected.SM_GoToSelected();
-            m_target.SM_GoToWaiting();
+            m_target.SM_GoToInactive();
         }
        else
         {

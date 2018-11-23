@@ -23,6 +23,8 @@ public class WSC_Waiting : WSC_WarehouseStateController
             if (m_target.actualCapacity> 0)
             {
                 m_target.actualCapacity -= m_target.actualCapacity / 2;
+                m_target.actualCapacity += m_target.loadTruck;
+                m_target.actualCapacityText.text = m_target.actualCapacity + "/" + m_target.capacity;
             }
             timeForUnload = 10.0f;
         }

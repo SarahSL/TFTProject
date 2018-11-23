@@ -394,7 +394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1611470122992902
 GameObject:
   m_ObjectHideFlags: 1
@@ -2085,6 +2085,8 @@ MonoBehaviour:
   m_instanciables:
     TruckControllerPrefab: {fileID: 1702906986469554, guid: 0aabc7da2cdbae14a8b88b5aae4289ee,
       type: 2}
+  gameManagerPlaying: {fileID: 0}
+  nextTrucks: []
   trucksPositions:
   - {fileID: 4925735688092480}
   - {fileID: 4493784950676830}

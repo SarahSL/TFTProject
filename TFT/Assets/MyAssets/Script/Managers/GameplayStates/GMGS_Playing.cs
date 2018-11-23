@@ -8,18 +8,18 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
    
 
     private float gameTime;
-    public GameManagerPlaying gamePlayingState;
+    public GameManagerPlaying gameManagerPlaying;
     public TruckAgent[] truckAgents;
     public WarehouseAgent[] warehouseAgents;
     public PoolTruckController poolTruck;
 
     public override void Enter()
     {
-        gamePlayingState = FindObjectOfType<GameManagerPlaying>();
+        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
         poolTruck = FindObjectOfType<PoolTruckController>();
         poolTruck.CreateFirstTruckController();
 
-        gamePlayingState.poolTruck = poolTruck;
+        gameManagerPlaying.poolTruck = poolTruck;
         warehouseAgents = FindObjectsOfType<WarehouseAgent>();
         foreach (WarehouseAgent warehouseAgent in warehouseAgents)
         {
@@ -32,7 +32,9 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         }
 
         gameTime = 60.0f;
-        gamePlayingState.GPS_GoToPlaying_Waiting();
+        gameManagerPlaying.wareLinkText.SetActive(true);
+
+        gameManagerPlaying.GPS_GoToPlaying_Waiting();
     }
 
     public override void Exit()
@@ -47,6 +49,8 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         {
             warehouseAgent.SM_GoToInactive();
         }
+
+        gameManagerPlaying.wareLinkText.SetActive(false);
         m_target.principalARController.boardObject.SetActive(false);
     }
 
@@ -55,10 +59,11 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         if( gameTime > 0)
         {
             gameTime -= Time.deltaTime;
+
         }
         else
         {
-            gamePlayingState.GPS_GoToInactive();
+            gameManagerPlaying.GPS_GoToInactive();
             m_target.SMG_GoToPoints();
         }
     }
