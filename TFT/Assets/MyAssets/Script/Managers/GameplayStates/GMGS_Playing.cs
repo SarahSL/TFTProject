@@ -2,16 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GMGS_Playing : GMGS_GameplayControllerStates
 {
    
 
     private float gameTime;
+    private Text gameTimeText;
+
     public GameManagerPlaying gameManagerPlaying;
     public TruckAgent[] truckAgents;
     public WarehouseAgent[] warehouseAgents;
     public PoolTruckController poolTruck;
+    
 
     public override void Enter()
     {
@@ -31,7 +35,11 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
             truckagent.SM_GoToWaiting();
         }
 
+
+        m_target.GameTimeUI.SetActive(true);
+        gameTimeText = m_target.GameTimeUI.GetComponentInChildren<Text>();
         gameTime = 60.0f;
+        gameTimeText.text = "Tiempo: " + " " + gameTime.ToString("f0");
         gameManagerPlaying.wareLinkText.SetActive(true);
 
         gameManagerPlaying.GPS_GoToPlaying_Waiting();
@@ -51,6 +59,7 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         }
 
         gameManagerPlaying.wareLinkText.SetActive(false);
+        m_target.GameTimeUI.SetActive(false);
         m_target.principalARController.boardObject.SetActive(false);
     }
 
@@ -59,6 +68,8 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         if( gameTime > 0)
         {
             gameTime -= Time.deltaTime;
+
+            gameTimeText.text = "Tiempo:" + " " + gameTime.ToString("f0");
 
         }
         else

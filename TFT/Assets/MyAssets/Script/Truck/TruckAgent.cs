@@ -102,7 +102,7 @@ public class TruckAgent : MonoBehaviour
 
         //MEJORAR
         loadText.text = "" + load;
-        typeLoad = UnityEngine.Random.Range(1,3);
+        typeLoad = UnityEngine.Random.Range(1,4);
         switch (typeLoad)
         {
             case 1:

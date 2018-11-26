@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class PoolTruckController : MonoBehaviour
 {
     public PoolTruckControllerInstanciables m_instanciables;
-    public GameManagerPlaying gameManagerPlaying;
+    
 
     public GameObject[] nextTrucks;
     public Transform[] trucksPositions;
 
-
+    private GameManagerPlaying gameManagerPlaying;
     private int trucksListInt;
     private TruckAgent truckAgentComponent;
     private Text wareLink;
@@ -21,9 +21,8 @@ public class PoolTruckController : MonoBehaviour
     void Awake()
     {
         trucksListInt = 8;
-        truckStatePos = 1;
+        truckStatePos = 0;
         nextTrucks = new GameObject[8];
-        wareLink = gameManagerPlaying.wareLinkText.GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -33,6 +32,7 @@ public class PoolTruckController : MonoBehaviour
     }
     public void CreateFirstTruckController()
     {
+        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
         CreateTruck(0).SetActive(true);
         CreateTruck(1).SetActive(true);
         CreateTruck(2).SetActive(true);
@@ -43,11 +43,12 @@ public class PoolTruckController : MonoBehaviour
         
         if (truckStatePos > 8)
         {
-            truckStatePos = 1;
+            truckStatePos = 0;
             CreateListTruck();
         }
         nextTrucks[truckStatePos].transform.position = trucksPositions[oldPosition].gameObject.transform.position;
-        
+        truckAgentComponent = nextTrucks[truckStatePos].GetComponent<TruckAgent>();
+        truckAgentComponent.idTruck = oldPosition;
         nextTrucks[truckStatePos].SetActive(true);
         SetWareLinktText(truckStatePos);
         truckStatePos++;
@@ -56,6 +57,7 @@ public class PoolTruckController : MonoBehaviour
     }
     private void CreateListTruck()
     {
+        wareLink =  gameManagerPlaying.wareLinkText.GetComponentInChildren<Text>();
 
         for(int i = 0; i < trucksListInt; i++)
         {
@@ -63,8 +65,9 @@ public class PoolTruckController : MonoBehaviour
             nextTrucks[i].SetActive(false);
             if (i < 3)
             {
-                // EL PROBLEMA ESTA AQUI
-                wareLink.text += "LOAD: " + truckAgentComponent.load + "\n TYPE_LOAD: " + truckAgentComponent.typeLoad + "\n";
+                truckAgentComponent = nextTrucks[i].GetComponent<TruckAgent>();
+                wareLink.text += "LOAD: " + truckAgentComponent.load + "    TYPE: " 
+                    + truckAgentComponent.typeLoadText.text +"\n";
             }
         }
     }
@@ -84,12 +87,12 @@ public class PoolTruckController : MonoBehaviour
     {
         if(truckStatePos < truckStatePos + 2)
         {
-            truckAgentComponent = nextTrucks[truckStatePos + 1].GetComponentInChildren<TruckAgent>();
-            wareLink.text = "LOAD: " + truckAgentComponent.load + "\n TYPE_LOAD: " + truckAgentComponent.typeLoad + "\n";
+            truckAgentComponent = nextTrucks[truckStatePos + 1].GetComponent<TruckAgent>();
+            wareLink.text = "LOAD: " + truckAgentComponent.load + "    TYPE: " + truckAgentComponent.typeLoadText.text + "\n";
 
 
-            truckAgentComponent = nextTrucks[truckStatePos + 2].GetComponentInChildren<TruckAgent>();
-            wareLink.text = "LOAD: " + truckAgentComponent.load + "\n TYPE_LOAD: " + truckAgentComponent.typeLoad + "\n";
+            truckAgentComponent = nextTrucks[truckStatePos + 2].GetComponent<TruckAgent>();
+            wareLink.text += "LOAD: " + truckAgentComponent.load + "    TYPE: " + truckAgentComponent.typeLoadText.text + "\n";
         }
     }
 

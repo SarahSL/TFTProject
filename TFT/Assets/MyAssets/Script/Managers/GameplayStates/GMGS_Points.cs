@@ -2,14 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GMGS_Points : GMGS_GameplayControllerStates
 {
     public InputManager inputManager;
     public GameManagerMain gameManagerMain;
+
+    private GameManagerPlaying gameManagerPlaying;
+
+    private Text points;
     public override void Enter()
     {
         //SHOW THE POINTS
+
+        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
+        m_target.pointsUI.SetActive(true);
+        points =  m_target.pointsUI.GetComponentInChildren<Text>();
+        points.text += gameManagerPlaying.points;
+
         inputManager = FindObjectOfType<InputManager>();
         inputManager.TouchAction += MenuState;
         gameManagerMain = FindObjectOfType<GameManagerMain>();
@@ -18,6 +29,7 @@ public class GMGS_Points : GMGS_GameplayControllerStates
     public override void Exit()
     {
         inputManager.TouchAction -= MenuState;
+        m_target.pointsUI.SetActive(false);
 
     }
 
