@@ -9,11 +9,7 @@ public class GameManagerPlaying : MonoBehaviour {
     public GameObject truckSelected;
     public PoolTruckController poolTruck;
 
-    public GameObject wareLinkText;
-
-    public int warehousesActualCapacity;
-    public int warehousesTotalCapacity;
-
+    public GameObject wareLinkText; 
     public int points;
 
     private void Update()

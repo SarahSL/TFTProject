@@ -40,7 +40,7 @@ public class TSC_OnWay : TSC_TruckControllerState
         {
             m_target.agent.destination = m_target.warehouseSelected.transform.position;
             
-            m_target.gameManagerPlaying.NewTruck(m_target.idTruck);
+            m_target.gameManagerPlaying.NewTruck(m_target.positionTruck);
 
             m_target.warehouseSelected.SM_GoToSelected();
             m_target.SM_GoToInactive();

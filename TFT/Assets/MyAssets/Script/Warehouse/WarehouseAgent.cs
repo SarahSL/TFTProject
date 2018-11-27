@@ -6,16 +6,11 @@ using UnityEngine;
 public class WarehouseAgent : MonoBehaviour {
 
     public PrincipalARController principalARController;
-
-
     public TextMesh actualCapacityText;
-
     public int[] typesLoad;
     public int capacity;
 
     public int actualCapacity;
-
-
     public int loadTruck;
 
     private void Update()

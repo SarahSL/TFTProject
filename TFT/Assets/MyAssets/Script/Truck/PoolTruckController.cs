@@ -8,67 +8,85 @@ public class PoolTruckController : MonoBehaviour
     public PoolTruckControllerInstanciables m_instanciables;
     
 
-    public GameObject[] nextTrucks;
+   // public GameObject[] nextTrucks;
     public Transform[] trucksPositions;
 
     private GameManagerPlaying gameManagerPlaying;
-    private int trucksListInt;
     private TruckAgent truckAgentComponent;
     private Text wareLink;
-    private int truckStatePos;
+    private int id;
+    private int idListaActual;
 
-    // Use this for initialization
+
+    private List<GameObject> nextTrucks;
+    
     void Awake()
     {
-        trucksListInt = 8;
-        truckStatePos = 0;
-        nextTrucks = new GameObject[8];
+        id = 0;
+        idListaActual = 3;
+        nextTrucks = new List<GameObject>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
+        if(id == idListaActual)
+        {
 
+            CreateListTruck();
+
+            ControllerWareLink();
+        }
     }
     public void CreateFirstTruckController()
     {
         gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
+
+        wareLink = gameManagerPlaying.wareLinkText.GetComponentInChildren<Text>();
         CreateTruck(0).SetActive(true);
         CreateTruck(1).SetActive(true);
         CreateTruck(2).SetActive(true);
         CreateListTruck();
-    }
-    public void NewTruck(int oldPosition)
-    {
-        
-        if (truckStatePos > 8)
-        {
-            truckStatePos = 0;
-            CreateListTruck();
-        }
-        nextTrucks[truckStatePos].transform.position = trucksPositions[oldPosition].gameObject.transform.position;
-        truckAgentComponent = nextTrucks[truckStatePos].GetComponent<TruckAgent>();
-        truckAgentComponent.idTruck = oldPosition;
-        nextTrucks[truckStatePos].SetActive(true);
-        SetWareLinktText(truckStatePos);
-        truckStatePos++;
-
-
+        ControllerWareLink();
     }
     private void CreateListTruck()
     {
-        wareLink =  gameManagerPlaying.wareLinkText.GetComponentInChildren<Text>();
+        GameObject truck = CreateTruck(1);
+        truck.SetActive(false);
+        nextTrucks.Add(truck);
 
-        for(int i = 0; i < trucksListInt; i++)
+        GameObject truck2 = CreateTruck(1);
+        truck2.SetActive(false);
+        nextTrucks.Add(truck2);
+
+        GameObject truck3 = CreateTruck(1);
+        truck3.SetActive(false);
+        nextTrucks.Add(truck3);
+    }
+    public void NewTruck(int oldPosition)
+    {
+        GameObject trucks = nextTrucks.Find(
+            (x) => x.GetComponent<TruckAgent>().idTruck == idListaActual);
+        trucks.transform.position = trucksPositions[oldPosition].position;
+        truckAgentComponent = trucks.GetComponent<TruckAgent>();
+        truckAgentComponent.positionTruck = oldPosition;
+
+        trucks.SetActive(true);
+
+        idListaActual++;
+
+        ControllerWareLink();
+    }
+    private void ControllerWareLink()
+    {
+        wareLink.text = "";
+        Debug.Log("CONTROLLER WARE LINKKKKKKKKK--------------");
+        for (int i =idListaActual-3;i<nextTrucks.Count; i++)
         {
-            nextTrucks[i] = CreateTruck(1);
-            nextTrucks[i].SetActive(false);
-            if (i < 3)
-            {
-                truckAgentComponent = nextTrucks[i].GetComponent<TruckAgent>();
-                wareLink.text += "LOAD: " + truckAgentComponent.load + "    TYPE: " 
-                    + truckAgentComponent.typeLoadText.text +"\n";
-            }
+            Debug.Log("entra EN EL BUCLEEEEEEEEEEEEEEEEE");
+            truckAgentComponent = nextTrucks[i].GetComponent<TruckAgent>();
+            wareLink.text +="LOAD:  "+truckAgentComponent.load
+                +" TYPE:  "+truckAgentComponent.typeLoadText.text+"\n";
+
+            Debug.Log(wareLink.text);
         }
     }
     private GameObject CreateTruck(int pos)
@@ -79,23 +97,11 @@ public class PoolTruckController : MonoBehaviour
 
 
         truckAgentComponent = truck.GetComponent<TruckAgent>();
-        truckAgentComponent.idTruck = pos;
+        truckAgentComponent.positionTruck = pos;
+        truckAgentComponent.idTruck = id;
+        id++;
         return truck;
     }
-    
-    private void SetWareLinktText( int truckStatePos)
-    {
-        if(truckStatePos < truckStatePos + 2)
-        {
-            truckAgentComponent = nextTrucks[truckStatePos + 1].GetComponent<TruckAgent>();
-            wareLink.text = "LOAD: " + truckAgentComponent.load + "    TYPE: " + truckAgentComponent.typeLoadText.text + "\n";
-
-
-            truckAgentComponent = nextTrucks[truckStatePos + 2].GetComponent<TruckAgent>();
-            wareLink.text += "LOAD: " + truckAgentComponent.load + "    TYPE: " + truckAgentComponent.typeLoadText.text + "\n";
-        }
-    }
-
 
 
 

@@ -15,6 +15,7 @@ public class TruckAgent : MonoBehaviour
     public int load;
     public int typeLoad;
     public int idTruck;
+    public int positionTruck;
 
     private void Update()
     {
@@ -90,16 +91,7 @@ public class TruckAgent : MonoBehaviour
     private void SetTruck()
     {
         gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
-        int aux = gameManagerPlaying.warehousesActualCapacity / 2;
-        if (aux == 0)
-        {
-            load = UnityEngine.Random.Range(30, 60);
-        }
-        else
-        {
-            load = UnityEngine.Random.Range(1, aux);
-        }
-
+        load = UnityEngine.Random.Range(30, 90);
         //MEJORAR
         loadText.text = "" + load;
         typeLoad = UnityEngine.Random.Range(1,4);
