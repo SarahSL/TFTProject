@@ -10,14 +10,17 @@ public class GPS_Playing_Waiting : GPS_GamePlayingState
     string raycastTag;
     public TruckAgent truckAgent;
 
+
+    public WarehouseAgent[] warehouseAgents;
+
     public override void Enter()
     {
-        Debug.Log("ON WAITIIIIIIIIIIIINGGGGGGGGGGGGGGGGGGGGG----------");
         inputManager = FindObjectOfType<InputManager>();
         raycastTag = "";
+
+
         inputManager.TouchAction += SelectTruck;
-
-
+         
     }
 
     public override void Exit()
@@ -40,12 +43,12 @@ public class GPS_Playing_Waiting : GPS_GamePlayingState
             if (raycastTag == "Truck")
             {
                 m_target.truckSelected = h.collider.gameObject;
-
-                Debug.Log("ON WAITIIIIIIIIIIIINGGGGGGGGGGGGGGGGGGGGG----------HAS PULSADO UN TRUCK" + m_target.truckSelected);
+                
 
                 truckAgent = m_target.truckSelected.GetComponent<TruckAgent>();
                 truckAgent.agent = h.collider.gameObject.GetComponent<NavMeshAgent>();
 
+                truckAgent.SM_GoToSelected();
                 m_target.GPS_GoToPlaying_TruckSelected();
             }
         }

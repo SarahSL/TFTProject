@@ -26,9 +26,13 @@ namespace GoogleARCoreInternal
     using System.Xml;
     using UnityEditor;
     using UnityEditor.Build;
+
+    using UnityEditor.Build.Reporting;
     using UnityEngine;
 
+#pragma warning disable CS0618 // El tipo o el miembro están obsoletos
     internal class CloudAnchorPreprocessBuild : IPreprocessBuild
+#pragma warning restore CS0618 // El tipo o el miembro están obsoletos
     {
         private const string k_ManifestTemplateGuid = "5e182918f0b8c4929a3d4b0af0ed6f56";
         private const string k_PluginsFolderGuid = "93be2b9777c348648a2d9151b7e233fc";
@@ -204,5 +208,7 @@ namespace GoogleARCoreInternal
             File.WriteAllText(Path.Combine(runtimeSettingsPath, "CloudServicesApiKey.txt"), cloudServicesApiKey);
             AssetDatabase.Refresh();
         }
+
+        
     }
 }

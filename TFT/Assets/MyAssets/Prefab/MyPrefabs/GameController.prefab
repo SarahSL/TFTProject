@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1966659883196452}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1415948567441456
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4271969225010560}
   - component: {fileID: 114239413219480124}
@@ -31,9 +31,9 @@ GameObject:
 --- !u!1 &1809475970747338
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4494595939402738}
   - component: {fileID: 114278413281404284}
@@ -47,9 +47,9 @@ GameObject:
 --- !u!1 &1966659883196452
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4658414278028754}
   - component: {fileID: 114234665394340054}
@@ -64,7 +64,7 @@ GameObject:
 --- !u!4 &4271969225010560
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415948567441456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -77,7 +77,7 @@ Transform:
 --- !u!4 &4494595939402738
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809475970747338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -90,7 +90,7 @@ Transform:
 --- !u!4 &4658414278028754
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966659883196452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -105,7 +105,7 @@ Transform:
 --- !u!114 &114027136100338348
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415948567441456}
   m_Enabled: 1
@@ -115,6 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   principalARController: {fileID: 0}
   truckSelected: {fileID: 0}
+  poolTruck: {fileID: 0}
+  wareLinkText: {fileID: 0}
+  warehousesActualCapacity: 0
+  warehousesTotalCapacity: 0
   m_states:
     m_current: {fileID: 0}
     m_playing_truckSelected: {fileID: 0}
@@ -123,7 +127,7 @@ MonoBehaviour:
 --- !u!114 &114234665394340054
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966659883196452}
   m_Enabled: 1
@@ -138,7 +142,7 @@ MonoBehaviour:
 --- !u!114 &114239413219480124
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415948567441456}
   m_Enabled: 1
@@ -148,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   principalARController: {fileID: 0}
   CountDownUI: {fileID: 0}
+  GameTimeUI: {fileID: 0}
   m_states:
     m_current: {fileID: 0}
     m_countDown: {fileID: 0}
@@ -159,7 +164,7 @@ MonoBehaviour:
 --- !u!114 &114278413281404284
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809475970747338}
   m_Enabled: 1
@@ -180,7 +185,7 @@ MonoBehaviour:
 --- !u!114 &114800451089080514
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966659883196452}
   m_Enabled: 1

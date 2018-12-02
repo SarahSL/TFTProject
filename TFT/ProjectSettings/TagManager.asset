@@ -4,12 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Goal
   - Plane
   - Video
   - Game
   - Truck
   - Warehouse
+  - PointTruckRight
+  - PointTruckCenter
+  - PointTruckLeft
   layers:
   - Default
   - TransparentFX

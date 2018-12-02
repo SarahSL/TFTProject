@@ -7,6 +7,9 @@ public class GameManagerGameplay : MonoBehaviour
     public PrincipalARController principalARController;
 
     public GameObject CountDownUI;
+    public GameObject GameTimeUI;
+
+    public GameObject pointsUI;
 
     private void Update()
     {

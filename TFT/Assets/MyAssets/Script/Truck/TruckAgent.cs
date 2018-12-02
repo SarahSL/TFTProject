@@ -3,12 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class TruckAgent : MonoBehaviour
 {
     public PrincipalARController principalARController;
     public NavMeshAgent agent;
-    public Transform warehousePosition;
+    public WarehouseAgent warehouseSelected;
+    public GameManagerPlaying gameManagerPlaying;
+
+    public int load;
+    public int typeLoad;
+    public int idTruck;
+    public int positionTruck;
+
     private void Update()
     {
         m_states.m_current.Update();
@@ -47,12 +55,16 @@ public class TruckAgent : MonoBehaviour
 
     private void Awake()
     {
+        
+        SetTruck();
+
         m_states.m_waiting = ScriptableObject.CreateInstance<TSC_Waiting>().Init(this) as TSC_Waiting;
         m_states.m_angry = ScriptableObject.CreateInstance<TSC_Angry>().Init(this) as TSC_Angry;
         m_states.m_selected = ScriptableObject.CreateInstance<TSC_Selected>().Init(this) as TSC_Selected;
         m_states.m_onway = ScriptableObject.CreateInstance<TSC_OnWay>().Init(this) as TSC_OnWay;
         m_states.m_inactive = ScriptableObject.CreateInstance<TSC_Inactive>().Init(this) as TSC_Inactive;
         m_states.m_current = m_states.m_waiting;
+        
         SM_GoToWaiting();
     }
 
@@ -70,4 +82,35 @@ public class TruckAgent : MonoBehaviour
         public TSC_OnWay m_onway;
         public TSC_Inactive m_inactive;
     }
+
+
+
+    public TextMesh typeLoadText;
+    public TextMesh loadText;
+
+    private void SetTruck()
+    {
+        gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
+        load = UnityEngine.Random.Range(30, 90);
+        //MEJORAR
+        loadText.text = "" + load;
+        typeLoad = UnityEngine.Random.Range(1,4);
+        switch (typeLoad)
+        {
+            case 1:
+                typeLoadText.text = "Grande";
+                break;
+            case 2:
+
+                typeLoadText.text = "Pequeño";
+                break;
+            case 3:
+
+                typeLoadText.text = "Fragil";
+                break;
+        } 
+
+    }
+
+   
 }

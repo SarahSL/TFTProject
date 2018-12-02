@@ -24,9 +24,12 @@ namespace GoogleARCoreInternal
     using System.IO;
     using UnityEditor;
     using UnityEditor.Build;
+    using UnityEditor.Build.Reporting;
     using UnityEngine;
 
+#pragma warning disable CS0618 // El tipo o el miembro están obsoletos
     internal class RequiredOptionalPreprocessBuild : IPreprocessBuild
+#pragma warning restore CS0618 // El tipo o el miembro están obsoletos
     {
         [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
          Justification = "Overriden property.")]
@@ -50,5 +53,6 @@ namespace GoogleARCoreInternal
             AssetHelper.GetPluginImporterByName("google_ar_optional.aar")
                 .SetCompatibleWithPlatform(BuildTarget.Android, !isARCoreRequired);
         }
+        
     }
 }
