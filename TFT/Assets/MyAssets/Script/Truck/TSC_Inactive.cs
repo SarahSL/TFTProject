@@ -9,11 +9,9 @@ public class TSC_Inactive : TSC_TruckControllerState
     {
         
     }
-
     public override void Exit()
     {
     }
-
     public override void Update()
     {
         m_target.gameObject.SetActive(false);

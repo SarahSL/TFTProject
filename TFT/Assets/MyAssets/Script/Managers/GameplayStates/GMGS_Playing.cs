@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GMGS_Playing : GMGS_GameplayControllerStates
 {
-   
-
     private float gameTime;
     private Text gameTimeText;
 
@@ -57,7 +55,7 @@ public class GMGS_Playing : GMGS_GameplayControllerStates
         {
             warehouseAgent.SM_GoToInactive();
         }
-
+        poolTruck.GameOver();
         gameManagerPlaying.wareLinkText.SetActive(false);
         m_target.GameTimeUI.SetActive(false);
         m_target.principalARController.boardObject.SetActive(false);

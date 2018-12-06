@@ -14,12 +14,9 @@ public class GMS_WaitingBox : GMS_ControllerState
         m_director.initialTime = 0;
         m_director.Play();
     }
-
     public override void Exit()
     {
-       
     }
-
     public override void Update()
     {
 

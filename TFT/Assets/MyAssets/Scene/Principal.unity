@@ -113,62 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &293846660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 293846662}
-  - component: {fileID: 293846661}
-  m_Layer: 0
-  m_Name: TestyController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &293846661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 293846660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cecfa8bf4dc04a54c8bc99e9cbb56294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FirstPersonCamera: {fileID: 1265635998}
-  TrackedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
-    type: 2}
-  TestyCanvas: []
-  test: {fileID: 1628742999549688, guid: 432347fc74f2ab642a88664eef1c5ac2, type: 2}
---- !u!4 &293846662
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 293846660}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11472283, y: -0.021484062, z: -0.12234342}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2127011750}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &302250342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1907087798437390, guid: 9472ffdb280e0ea4f8b41640869df209,
     type: 2}
   m_PrefabInternal: {fileID: 1160687982}
---- !u!114 &369771797 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
-    type: 2}
-  m_PrefabInternal: {fileID: 703891911}
-  m_Script: {fileID: 11500000, guid: a1d6743e47f7d6741ba9ef56001207fb, type: 3}
 --- !u!1 &376561823
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +233,7 @@ Prefab:
         type: 2}
       propertyPath: testyController
       value: 
-      objectReference: {fileID: 293846660}
+      objectReference: {fileID: 0}
     - target: {fileID: 114278413281404284, guid: 280a1307689719646bb79be562c2304a,
         type: 2}
       propertyPath: principalARController
@@ -323,12 +272,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280a1307689719646bb79be562c2304a, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &970611474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114027136100338348, guid: 280a1307689719646bb79be562c2304a,
-    type: 2}
-  m_PrefabInternal: {fileID: 703891911}
-  m_Script: {fileID: 11500000, guid: fe5ba0cd8bd519c4d8c502e09497a7ce, type: 3}
 --- !u!1001 &1103308512
 Prefab:
   m_ObjectHideFlags: 0
@@ -472,6 +415,13 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114157647033164718, guid: 9472ffdb280e0ea4f8b41640869df209,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Camiones en espera:
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9472ffdb280e0ea4f8b41640869df209, type: 2}
   m_IsPrefabAsset: 0
@@ -569,48 +519,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1072611913352182, guid: 9472ffdb280e0ea4f8b41640869df209,
     type: 2}
   m_PrefabInternal: {fileID: 1160687982}
---- !u!1 &1646241041
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1646241043}
-  - component: {fileID: 1646241042}
-  m_Layer: 0
-  m_Name: Simulador
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1646241042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1646241041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e69af75867543ce40960567646af4e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gmp: {fileID: 970611474}
-  gmm: {fileID: 369771797}
---- !u!4 &1646241043
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1646241041}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09045682, y: -1.4214864, z: -0.00048127957}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2027931028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1280066030548406, guid: 9472ffdb280e0ea4f8b41640869df209,
@@ -625,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2127011750}
   m_Layer: 0
-  m_Name: TestsControllers
+  m_Name: Controllers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,7 +549,6 @@ Transform:
   m_LocalPosition: {x: -0.05888393, y: 0.06731902, z: 0.15857685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 293846662}
   - {fileID: 2127609427}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -673,7 +580,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2127011750}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2127609428
 MonoBehaviour:

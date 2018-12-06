@@ -91,8 +91,7 @@ public class TruckAgent : MonoBehaviour
     private void SetTruck()
     {
         gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
-        load = UnityEngine.Random.Range(30, 90);
-        //MEJORAR
+        load = UnityEngine.Random.Range(30, 50);
         loadText.text = "" + load;
         typeLoad = UnityEngine.Random.Range(1,4);
         switch (typeLoad)
@@ -109,7 +108,6 @@ public class TruckAgent : MonoBehaviour
                 typeLoadText.text = "Fragil";
                 break;
         } 
-
     }
 
    

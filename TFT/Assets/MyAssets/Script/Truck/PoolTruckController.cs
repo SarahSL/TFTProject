@@ -6,18 +6,12 @@ using UnityEngine.UI;
 public class PoolTruckController : MonoBehaviour
 {
     public PoolTruckControllerInstanciables m_instanciables;
-    
-
-   // public GameObject[] nextTrucks;
     public Transform[] trucksPositions;
-
     private GameManagerPlaying gameManagerPlaying;
     private TruckAgent truckAgentComponent;
     private Text wareLink;
     private int id;
     private int idListaActual;
-
-
     private List<GameObject> nextTrucks;
     
     void Awake()
@@ -30,7 +24,6 @@ public class PoolTruckController : MonoBehaviour
     {
         if(id == idListaActual)
         {
-
             CreateListTruck();
 
             ControllerWareLink();
@@ -78,10 +71,8 @@ public class PoolTruckController : MonoBehaviour
     private void ControllerWareLink()
     {
         wareLink.text = "";
-        Debug.Log("CONTROLLER WARE LINKKKKKKKKK--------------");
         for (int i =idListaActual-3;i<nextTrucks.Count; i++)
         {
-            Debug.Log("entra EN EL BUCLEEEEEEEEEEEEEEEEE");
             truckAgentComponent = nextTrucks[i].GetComponent<TruckAgent>();
             wareLink.text +="LOAD:  "+truckAgentComponent.load
                 +" TYPE:  "+truckAgentComponent.typeLoadText.text+"\n";
@@ -94,22 +85,22 @@ public class PoolTruckController : MonoBehaviour
         var truck = Instantiate(m_instanciables.TruckControllerPrefab, trucksPositions[pos].position, Quaternion.identity);
         truck.transform.parent = trucksPositions[pos].gameObject.transform;
         truck.transform.localScale = new Vector3(1f, 1F, 1F);
-
-
         truckAgentComponent = truck.GetComponent<TruckAgent>();
         truckAgentComponent.positionTruck = pos;
         truckAgentComponent.idTruck = id;
         id++;
         return truck;
     }
-
-
-
+    public void GameOver()
+    {
+        wareLink.text = "";
+        nextTrucks.Clear();
+        id = 0;
+        idListaActual = 3;
+    }
     [System.Serializable]
     public class PoolTruckControllerInstanciables
     {
         public GameObject TruckControllerPrefab;
-
-
     }
 }

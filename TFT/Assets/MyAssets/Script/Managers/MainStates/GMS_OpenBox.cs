@@ -19,12 +19,9 @@ public class GMS_OpenBox : GMS_ControllerState
             m_target.SM_GoToPlaying();
         }
     }
-
     public override void Exit()
     {
-        m_target.principalARController.boxObject.SetActive(false);
     }
-
     public override void Update()
     {
     }

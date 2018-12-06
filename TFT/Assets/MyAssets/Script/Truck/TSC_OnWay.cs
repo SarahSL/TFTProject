@@ -24,16 +24,13 @@ public class TSC_OnWay : TSC_TruckControllerState
                     isPermited = true;
                 }
             }
-        }
-            
-            
+        }   
     }
 
     public override void Exit()
     {
         isPermited = false;
     }
-
     public override void Update()
     {
         if (isPermited)

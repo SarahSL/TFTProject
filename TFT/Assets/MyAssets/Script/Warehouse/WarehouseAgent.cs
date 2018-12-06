@@ -42,8 +42,6 @@ public class WarehouseAgent : MonoBehaviour {
 
     private void Awake()
     {
-        //EDITADO EN EL EDITOR. capacity y types
-
         actualCapacityText.text = actualCapacity + "/" + capacity;
         m_states.m_waiting = ScriptableObject.CreateInstance<WSC_Waiting>().Init(this) as WSC_Waiting;
         m_states.m_selected = ScriptableObject.CreateInstance<WSC_Selected>().Init(this) as WSC_Selected;
@@ -67,11 +65,6 @@ public class WarehouseAgent : MonoBehaviour {
         
         public WSC_Inactive m_inactive;
     }
-
-
-
-
-
     
 
 }

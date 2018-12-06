@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class InitSystem : MonoBehaviour
 {
-
     public GameObject principalArCore;
-    public GameObject testyController;
-
     public GameObject gameManagerMain;
     public GameObject gameManagerGameplay;
     private void Awake()
@@ -18,12 +15,10 @@ public class InitSystem : MonoBehaviour
         gameManagerMain.SetActive(true);
         principalArCore.SetActive(true);
         gameManagerGameplay.SetActive(true);
-        //testyController.SetActive(true);
 #elif UNITY_EDITOR
 
         Debug.Log("---- IF UNITY EDITOR ----");
         principalArCore.SetActive(false);
-        testyController.SetActive(false);
         gameManagerMain.SetActive(false);
         gameManagerGameplay.SetActive(false);
 #endif

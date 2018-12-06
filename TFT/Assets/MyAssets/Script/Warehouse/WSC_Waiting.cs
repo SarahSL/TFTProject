@@ -8,14 +8,11 @@ public class WSC_Waiting : WSC_WarehouseStateController
     public override void Enter()
     {
         timeForUnload = 10.0f;
-
     }
-
     public override void Exit()
     {
 
     }
-
     public override void Update()
     {
         if (timeForUnload < 0)

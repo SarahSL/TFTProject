@@ -16,15 +16,11 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
         raycastTag = "";
         inputManager.TouchAction += SelectWarehouse;
         truckAgent = m_target.truckSelected.GetComponent<TruckAgent>();
-
-
     }
-
     public override void Exit()
     {
         inputManager.TouchAction -= SelectWarehouse;
     }
-
     public override void Update()
     {
     }
@@ -42,7 +38,6 @@ public class GPS_Playing_TruckSelected : GPS_GamePlayingState
             else if (raycastTag == "Warehouse")
             {
                 truckAgent.warehouseSelected = h.collider.gameObject.GetComponent<WarehouseAgent>();
-                
                 truckAgent.SM_GoToOnWay();
                 m_target.GPS_GoToPlaying_Waiting();
             }

@@ -8,14 +8,11 @@ public class GMGS_Points : GMGS_GameplayControllerStates
 {
     public InputManager inputManager;
     public GameManagerMain gameManagerMain;
-
     private GameManagerPlaying gameManagerPlaying;
-
     private Text points;
+
     public override void Enter()
     {
-        //SHOW THE POINTS
-
         gameManagerPlaying = FindObjectOfType<GameManagerPlaying>();
         m_target.pointsUI.SetActive(true);
         points =  m_target.pointsUI.GetComponentInChildren<Text>();
@@ -25,14 +22,11 @@ public class GMGS_Points : GMGS_GameplayControllerStates
         inputManager.TouchAction += MenuState;
         gameManagerMain = FindObjectOfType<GameManagerMain>();
     }
-
     public override void Exit()
     {
         inputManager.TouchAction -= MenuState;
         m_target.pointsUI.SetActive(false);
-
-    }
-
+    } 
     public override void Update()
     {
 
@@ -42,6 +36,5 @@ public class GMGS_Points : GMGS_GameplayControllerStates
         Debug.Log("Points");
         m_target.SMG_GoToInactive();
         gameManagerMain.SM_GoToWaitingBox();
-
     }
 }
